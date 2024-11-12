@@ -3,9 +3,20 @@ class CheckXlsFilesJob < ApplicationJob
 
   def perform
     latest_file = Dir[XLS_FILE_PATH.join("*.xlsx")].max_by { |f| File.mtime(f) }
-    return unless latest_file && file_newer?(latest_file)
+    unless latest_file && file_newer?(latest_file)
+      Rails.logger.info "CheckXlsFilesJob: No new file found or file is not newer. Skipping processing."
+      return
+    end
 
-    process_xls_file(latest_file)
+    Rails.logger.info "CheckXlsFilesJob: Started processing file #{latest_file}"
+
+    begin
+      process_xls_file(latest_file)
+      Rails.logger.info "CheckXlsFilesJob: Successfully completed processing file #{latest_file}"
+    rescue => e
+      Rails.logger.error "CheckXlsFilesJob: Failed to process file #{latest_file} with error: #{e.message}"
+      raise e
+    end
   end
 
   private
@@ -32,7 +43,6 @@ class CheckXlsFilesJob < ApplicationJob
         years.each_with_index do |year, index|
           migration_value = row[index + 2]&.cell_value
 
-          # Create a new entry for each year of migration data for the country
           YearlyMigrationDatum.create!(
             financial_year: year,
             country_code: country_code,
