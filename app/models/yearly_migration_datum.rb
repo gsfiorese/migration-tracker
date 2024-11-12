@@ -1,0 +1,2 @@
+class YearlyMigrationDatum < ApplicationRecord
+end
