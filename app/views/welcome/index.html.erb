@@ -18,9 +18,13 @@
           <%= image_tag "MTLogo.svg", size: "200x100", alt: "Migration Tracker Logo", class: "me-2" %>
         </a>
         <div class="text-end ms-auto">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
+        <div class="d-inline-block">
+          <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light me-2" %>
         </div>
+        <div class="d-inline-block">
+          <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-warning" %>
+        </div>
+      </div>
       </div>
     </div>
   </header>

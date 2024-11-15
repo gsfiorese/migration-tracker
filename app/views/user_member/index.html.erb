@@ -1,0 +1,4 @@
+<h1>Welcome, Member!</h1>
+<p>This is the member dashboard for accessing member-specific features.</p>
+
+<%= link_to "Log Off", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>

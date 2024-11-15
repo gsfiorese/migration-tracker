@@ -8,3 +8,7 @@ import "../stylesheets/application.scss"
 const application = Application.start()
 const context = require.context("controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
+
+// config Rails UJS
+import Rails from "@rails/ujs"
+Rails.start()

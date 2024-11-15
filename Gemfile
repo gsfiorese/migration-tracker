@@ -18,6 +18,14 @@ gem "stimulus-rails"
 gem "jbuilder"
 # Devise authentication
 gem 'devise'
+# Omniauth for Google authentication to work with Devise
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
+
+# User variables in .env files
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
