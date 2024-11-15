@@ -1,6 +1,6 @@
 import "@hotwired/turbo-rails"
-import { Application } from "@hotwired/stimulus"
-import { definitionsFromContext } from "controllers"
+import { Application } from "stimulus"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
 import "bootstrap"
 import "../stylesheets/application.scss"
 
