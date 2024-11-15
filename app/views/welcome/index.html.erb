@@ -11,19 +11,34 @@
 <body>
 
   <!-- Header with logo, navigation, search, and buttons -->
-  <header class="p-3 text-bg-dark">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <%= image_tag "MTLogo.svg", size: "200x100", alt: "Migration Tracker Logo", class: "me-2" %>
-        </a>
-        <div class="text-end ms-auto">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
-        </div>
+<header class="p-3 text-bg-dark">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <%= image_tag "MTLogo.svg", size: "200x100", alt: "Migration Tracker Logo", class: "me-2" %>
+      </a>
+      <div class="text-end ms-auto">
+        <% if user_signed_in? %>
+          <div class="text-white">
+            <% if current_user.admin? %>
+              <p>Welcome, Admin <%= current_user.email %></p>
+              <%= link_to 'Admin Dashboard', admin_dashboard_index_path, class: 'btn btn-outline-light' %>
+            <% else %>
+              <p>Welcome, <%= current_user.email %></p>
+            <% end %>
+            <%= form_for :destroy_user_session, url: destroy_user_session_path, method: :delete do |f| %>
+  <%= f.submit 'Log Out' %>
+<% end %>
+            <!-- <%= link_to 'Log out', destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'btn btn-outline-light' %> -->
+          </div>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-light me-2' %>
+          <%= link_to 'Sign-up', new_user_registration_path, class: 'btn btn-warning' %>
+        <% end %>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
   <!-- Tabs Section -->
   <div class="container my-4">
