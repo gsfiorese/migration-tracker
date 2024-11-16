@@ -1,0 +1,2 @@
+module UserMemberHelper
+end
