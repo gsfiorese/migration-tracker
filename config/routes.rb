@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get '/user_admin', to: 'user_admin#index', as: :user_admin_index
   get '/user_member', to: 'user_member#index', as: :user_member_index
+  resources :visa_category do
+    resource :visa
+  end
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
