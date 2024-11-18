@@ -10,3 +10,13 @@
 <%= link_to "Logs Index View", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
 <%= link_to "Welcome Info Index View", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
 <%= link_to "Log Off", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
+
+<ul>
+  <% @anzsco_codes.each do |anzsco_code| %>
+    <li>
+      <strong>Code:</strong> <%= anzsco_code.anzsco_code %><br>
+      <strong>Occupation:</strong> <%= anzsco_code.occupation %><br>
+      <strong>Description:</strong> <%= anzsco_code.description %>
+    </li>
+  <% end %>
+</ul>

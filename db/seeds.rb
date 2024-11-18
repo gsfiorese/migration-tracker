@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'csv'
+
+csv_file_path = Rails.root.join('lib', 'storage', 'csv_files', 'anzsco_codes.csv')
+
+CSV.foreach(csv_file_path, headers: true) do |row|
+  AnzscoCode.create!(
+    anzsco_code: row['anzsco_code'].to_i,
+    occupation: row['occupation'],
+    description: row['description']
+  )
+end

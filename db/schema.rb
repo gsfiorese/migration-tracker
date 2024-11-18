@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_12_071128) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_18_034948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "anzsco_codes", force: :cascade do |t|
+    t.integer "anzsco_code"
+    t.string "occupation"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "logs", force: :cascade do |t|
     t.string "log_type"
@@ -40,6 +48,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_12_071128) do
     t.string "role", default: "member"
     t.datetime "last_login_at"
     t.string "status", default: "active"
+    t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
