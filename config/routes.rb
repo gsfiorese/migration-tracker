@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  get "visa_category/new"
+  root "welcome#index"
 
-  get '/user_admin', to: 'user_admin#index', as: :user_admin_index
-  get '/user_member', to: 'user_member#index', as: :user_member_index
-  resources :visa_category do
-    resource :visa
+  get "/user_admin", to: "user_admin#index", as: :user_admin_index
+  get "/user_member", to: "user_member#index", as: :user_member_index
+  resources :visa_categories do
+    resource :visas
   end
 
   devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,0 +1,2 @@
+module VisaCategoryHelper
+end

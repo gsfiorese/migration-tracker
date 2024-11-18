@@ -17,14 +17,18 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 # Devise authentication
-gem 'devise'
+gem "devise"
+# Create a form
+gem "simple_form"
+
 # Omniauth for Google authentication to work with Devise
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
+gem "omniauth"
+gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 
 # User variables in .env files
-gem 'dotenv-rails', groups: [:development, :test]
+gem "dotenv-rails", groups: [ :development, :test ]
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -42,14 +46,14 @@ gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # The Sidekiq background job framework
-gem 'sidekiq'
+gem "sidekiq"
 
 # The Roo gem for reading Excel files
-gem 'roo'
+gem "roo"
 
 # Use SCSS for stylesheets
 group :assets do
-  gem 'sassc-rails'
+  gem "sassc-rails"
 end
 
 group :development, :test do
@@ -76,5 +80,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-gem 'rspec-rails', group: [ :test ]
-gem 'rails-controller-testing', group: [ :test ]
+gem "rspec-rails", group: [ :test ]
+gem "rails-controller-testing", group: [ :test ]

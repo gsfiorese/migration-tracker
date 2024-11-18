@@ -1,0 +1,12 @@
+
+<h2><%= @visa_category.name%> </h2>
+<p><%= @visa_category.about%> </p>
+
+<%= link_to "Update",
+  edit_visa_category_path(@visa_category)
+%>
+
+<%= link_to "Delete",
+  visa_category_path(@visa_category),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
