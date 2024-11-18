@@ -18,19 +18,19 @@ class VisaCategoriesController < ApplicationController
   end
 
   def edit
-   @visa_category = VisaCategory.find(params(:id))
+   @visa_category = VisaCategory.find(params[:id])
   end
 
   def update
-    @visa_category = VisaCategory.find(params(:id))
+    @visa_category = VisaCategory.find(params[:id])
     @visa_category.update(visa_category_params)
     redirect_to visa_category_path(@visa_category)
   end
 
   def destroy
-    @visa_category = VisaCategory.find(params(:id))
+    @visa_category = VisaCategory.find(params[:id])
     @visa_category.destroy
-    redirect_to visa_category_path, status: :see_other
+    redirect_to visa_categories_path, status: :see_other
   end
 
 private
