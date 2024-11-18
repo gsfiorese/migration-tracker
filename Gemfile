@@ -26,6 +26,9 @@ gem "omniauth-rails_csrf_protection"
 # User variables in .env files
 gem 'dotenv-rails', groups: [:development, :test]
 
+# Pagination for Rails
+gem 'kaminari'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

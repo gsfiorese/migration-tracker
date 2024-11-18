@@ -1,0 +1,2 @@
+module UserAdmin::WelcomeHelper
+end
