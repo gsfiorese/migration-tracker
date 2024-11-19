@@ -38,4 +38,5 @@ private
 def visa_category_params
   params.require(:visa_category).permit(:name, :about)
 end
+
 end

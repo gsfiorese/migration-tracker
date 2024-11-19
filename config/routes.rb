@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "visas/new"
   get "visa_category/new"
   root "welcome#index"
 
