@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
+
+  # routes to user_admin
+  namespace :user_admin do
+    get "log/index", to: "log#index", as: "log_index"
+    get 'welcome/index', to: 'welcome#index', as: 'welcome_index'
+  end
+
+  # route to welcome page (root)
   root 'welcome#index'
 
+  # route from welcome page to user/member page
   get '/user_admin', to: 'user_admin#index', as: :user_admin_index
   get '/user_member', to: 'user_member#index', as: :user_member_index
 
+  # configuration for devise to work with omniauth (google)
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
