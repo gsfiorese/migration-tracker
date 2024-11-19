@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
     # Root route for admins/countries#index
-    root 'admins/countries#index'
-
-    # Additional routes for user admin and user member
-    get '/user_admin', to: 'user_admin#index', as: :user_admin_index
-    get '/user_member', to: 'user_member#index', as: :user_member_index
+    # root 'admins/countries#index'
 
     # Admins namespace with countries resource
     namespace :admins do
