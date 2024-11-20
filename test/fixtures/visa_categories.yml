@@ -2,6 +2,10 @@
 
 one:
   name: MyString
+  string: MyString
+  about: MyString
 
 two:
   name: MyString
+  string: MyString
+  about: MyString

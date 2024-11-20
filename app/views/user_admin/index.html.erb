@@ -1,10 +1,9 @@
 <h1>Welcome, Admin!</h1>
 <p>This is the admin dashboard for managing the application.</p>
 
-<%= link_to 'Countries Index', admins_countries_path %>
-<%#= link_to "Countries Index", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
+<%= link_to "Countries Index", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
 <%= link_to "Anzsco Code Index", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
-<%= link_to "Visa Types Index", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
+<%= link_to "Visa Categories Index", user_admin_visa_categories_path, id: "admin-welcome-link", class: "btn btn-danger" %>
 <%= link_to "Visa Index", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
 <%= link_to "User Index View", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
 <%= link_to "Cases Index View", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
