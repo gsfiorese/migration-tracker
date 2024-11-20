@@ -1,0 +1,2 @@
+class VisaCategory < ApplicationRecord
+end
