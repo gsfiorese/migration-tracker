@@ -1,8 +1,25 @@
 <h2><%= @visa_category.name%> </h2>
 <p><%= @visa_category.about%> </p>
 
-<%= link_to "Update",
+<%= link_to "Update Category",
   edit_user_admin_visa_category_path(@visa_category)
 %>
 
-<%= button_to "Delete Category",  user_admin_visa_categories_path(@visa_category), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= button_to "Delete Category", user_admin_visa_category_path(@visa_category), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%= link_to "Return to Visas Category Index",
+  user_admin_visa_categories_path(@visa_category)
+%>
+<br>
+
+<h2><strong> Visas </strong></h2>
+
+<%= link_to "Add a New Visa",
+   new_user_admin_visa_category_visa_path(@visa_category)
+%>
+
+
+<% @visa_category.visas.each do |visa| %>
+  <li><%= link_to visa.name, user_admin_visa_path(visa) %></li>
+  <li><%= visa.subclass %></li>
+<% end %>

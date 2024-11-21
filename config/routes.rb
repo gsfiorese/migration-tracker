@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     resources :anzsco_codes
 
     resources :visa_categories do
-      resource :visas
-
+      resources :visas, except: %i[index edit show update destroy]
     end
+    resources :visas, only: %i[index edit show update destroy]
   end
 
   # Route for welcome page (root)
