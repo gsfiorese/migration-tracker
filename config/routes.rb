@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
     resources :yearly_migration_data, only: [:index]
     resources :visa_categories do
-      resource :visas
+      resources :visas, except: %i[index edit show update destroy]
     end
+    resources :visas, only: %i[index edit show update destroy]
   end
 
   # Route for welcome page (root)

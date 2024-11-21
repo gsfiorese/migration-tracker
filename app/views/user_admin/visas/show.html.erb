@@ -1,0 +1,17 @@
+<p><strong> Visas </strong></p>
+<ul>
+  <li><%= @visa.name%></li>
+  <li><%= @visa.subclass %></li>
+</ul>
+<br>
+
+<li><%= link_to "Update visa ",
+edit_user_admin_visa_path(@visa)
+%></li>
+
+<%= button_to "Delete Visa",  user_admin_visa_path(@visa), method: :delete, data: { confirm: "Are you sure?" } %>
+
+
+<li><%= link_to "Return to Visas Index Page ",
+  user_admin_visas_path
+%></li>

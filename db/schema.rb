@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_20_091645) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_20_100240) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_20_091645) do
     t.integer "subclass"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "visa_category_id", null: false
+    t.index ["visa_category_id"], name: "index_visas_on_visa_category_id"
   end
 
   create_table "yearly_migration_data", force: :cascade do |t|
@@ -76,4 +78,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_20_091645) do
   end
 
   add_foreign_key "logs", "users"
+  add_foreign_key "visas", "visa_categories"
 end
