@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
     # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
     resources :yearly_migration_data, only: [:index]
+
+    resources :anzsco_codes
+
     resources :visa_categories do
       resources :visas, except: %i[index edit show update destroy]
     end

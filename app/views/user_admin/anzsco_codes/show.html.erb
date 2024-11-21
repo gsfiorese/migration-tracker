@@ -1,0 +1,9 @@
+<h2><%= @anzsco_code.anzsco_code%> </h2>
+<p><%= @anzsco_code.occupation%> </p>
+<p><%= @anzsco_code.description%> </p>
+
+<%= link_to "Update",
+  edit_user_admin_anzsco_code_path(@anzsco_code)
+%>
+
+<%= button_to "Delete Category",  user_admin_anzsco_code_path(@anzsco_code), method: :delete, data: { confirm: "Are you sure?" } %>
