@@ -1,0 +1,8 @@
+<h1>New ANZSCO Code</h1>
+
+<%= simple_form_for([:user_admin, @anzsco_code]) do |anzsco| %>
+  <%= anzsco.input :anzsco_code %>
+  <%= anzsco.input :occupation %>
+  <%= anzsco.input :description %>
+  <%= anzsco.submit %>
+<% end %>

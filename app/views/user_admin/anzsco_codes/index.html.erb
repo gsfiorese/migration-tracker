@@ -1,0 +1,10 @@
+<h1>All Anzsco codes</h1>
+
+<p><%= link_to "Add Additional Anzsco Codes ", new_user_admin_anzsco_code_path%></p>
+<p><%= link_to "Return to Admin Menu ", user_admin_index_path%></p>
+
+<ul>
+    <% @anzsco_codes.each do |anzsco_code| %>
+      <li><h3> <%= link_to anzsco_code.anzsco_code,  user_admin_anzsco_code_path(anzsco_code) %></h3></li>
+    <% end %>
+<ul>
