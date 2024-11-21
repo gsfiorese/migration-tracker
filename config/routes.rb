@@ -5,7 +5,12 @@ Rails.application.routes.draw do
     # Admins namespace with countries resource
     namespace :admins do
       resources :countries, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+      resources :users, only: [:index, :edit, :update, :destroy]
     end
+    # Admins namespace with users resource
+    # namespace :admins do
+      # resources :users, only: [:index, :edit, :update, :destroy]
+    # end
 
     # Devise user routes for authentication
     # routes to user_admin

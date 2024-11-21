@@ -1,0 +1,27 @@
+<h1>Users Index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.first_name %> <%= user.last_name %></td>
+        <td><%= user.role %></td>
+        <td>
+          <%= link_to 'Edit', edit_admins_user_path(user), class: 'btn btn-primary' %>
+          <%= form_with url: admins_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } do %>
+  <%= submit_tag 'Delete', class: 'btn btn-danger' %>
+<% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
