@@ -7,8 +7,16 @@ Rails.application.routes.draw do
     # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
     resources :yearly_migration_data, only: [:index]
 
+    # Add routes for ANZSCO Code
     resources :anzsco_codes
 
+    # Add routes for ANZSCO countries
+    resources :countries, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+    # Add routes for user
+    resources :users, only: [:index, :edit, :update, :destroy]
+
+    # Add routes for visa category and visa
     resources :visa_categories do
       resources :visas, except: %i[index edit show update destroy]
     end
