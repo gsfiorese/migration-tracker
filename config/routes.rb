@@ -7,19 +7,21 @@ Rails.application.routes.draw do
     # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
     resources :yearly_migration_data, only: [ :index ]
 
+    # Add routes for ANZSCO countries
+    resources :countries, only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
+
     # Add routes for ANZSCO Code
     resources :anzsco_codes
-
-    # Add routes for ANZSCO countries
-    resources :countries, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
     # Add routes for user
     resources :users
 
-
+    # Add routes for visa category and visa
     resources :visa_categories do
-      resource :visas
-    end
+      resources :visas, except: %i[index edit show update destroy]
+      end
+    resources :visas, only: %i[index edit show update destroy]
+  end
 
     namespace :user_member do
       get "welcome/index", to: "welcome#index", as: "welcome_index"
@@ -32,8 +34,7 @@ Rails.application.routes.draw do
       resources :visa_categories do
         resource :visas
       end
-
-  end
+    end
 
   # Route for welcome page (root)
   root "welcome#index"
