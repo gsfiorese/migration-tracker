@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :countries, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
     # Add routes for user
-    resources :users, only: [:index, :edit, :update, :destroy]
+    resources :users
 
     # Add routes for visa category and visa
     resources :visa_categories do

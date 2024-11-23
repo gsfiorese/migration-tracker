@@ -4,8 +4,8 @@
 <%= link_to "Countries Index", user_admin_countries_path, id: "admin-welcome-link", class: "btn btn-danger" %>
 <%= link_to "Anzsco Code Index", user_admin_anzsco_codes_path, id: "admin-welcome-link", class: "btn btn-danger" %>
 <%= link_to "Visa Categories Index", user_admin_visa_categories_path, id: "admin-welcome-link", class: "btn btn-danger" %>
-<%= link_to "Visa Index", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
-<%= link_to "User Index View", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
+<%= link_to "Visa Index", user_admin_visas_path, id: "admin-welcome-link", class: "btn btn-danger" %>
+<%= link_to "User Index View", user_admin_users_path, id: "admin-welcome-link", class: "btn btn-danger" %>
 <%= link_to "Cases Index View", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
 <%= link_to "Logs Index View", user_admin_log_index_path, id: "admin-logout-link", class: "btn btn-danger" %>
 <%= link_to "Welcome Info Index View", user_admin_welcome_index_path, id: "admin-welcome-link", class: "btn btn-danger" %>
