@@ -1,0 +1,21 @@
+@import "base/mixins";
+@import "base/variables";
+
+.card {
+  background-color: $card-background-color;
+  border: 1px solid $card-border-color;
+  border-radius: 0.25rem;
+  padding: $spacing;
+  @include card-shadow;
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-text {
+    font-size: 1rem;
+    color: $card-text-color;
+  }
+}

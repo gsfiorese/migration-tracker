@@ -1,0 +1,13 @@
+.visa-categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing;
+}
+
+.card.visa-category-card {
+  border-left: 4px solid #007bff; /* Blue border for Visa Category cards */
+  transition: transform 0.2s ease-in-out;
+}
+  &:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
