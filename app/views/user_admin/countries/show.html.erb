@@ -1,0 +1,14 @@
+<h1>Country Show page</h1>
+
+<h2><%= @country.name%> </h2>
+
+<%= link_to "Update Country ",
+  edit_user_admin_country_path(@country)
+%>
+
+<%= button_to "Delete Country", user_admin_country_path(@country), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%= link_to "Return to Countries",
+  user_admin_countries_path(@country)
+%>
+<br>

@@ -1,0 +1,7 @@
+<h1>Edit User</h1>
+
+<%= simple_form_for([:user_admin, @user]) do |f| %>
+  <%= f.input :email, input_html: { readonly: true } %>
+  <%= f.input :role, collection: [['Admin', 'admin'], ['Member', 'member']], prompt: 'Select a role' %>
+ <%= f.submit %>
+<% end %>

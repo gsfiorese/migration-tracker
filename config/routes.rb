@@ -7,7 +7,15 @@ Rails.application.routes.draw do
     # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
     resources :yearly_migration_data, only: [ :index ]
 
+    # Add routes for ANZSCO Code
     resources :anzsco_codes
+
+    # Add routes for ANZSCO countries
+    resources :countries, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+    # Add routes for user
+    resources :users
+
 
     resources :visa_categories do
       resource :visas
@@ -24,7 +32,7 @@ Rails.application.routes.draw do
       resources :visa_categories do
         resource :visas
       end
-    end
+
   end
 
   # Route for welcome page (root)

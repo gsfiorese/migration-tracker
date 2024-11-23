@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_21_021530) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_23_012041) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_21_021530) do
     t.integer "anzsco_code"
     t.string "occupation"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,7 +54,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_21_021530) do
     t.string "role", default: "member"
     t.datetime "last_login_at"
     t.string "status", default: "active"
-    t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -59,6 +64,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_21_021530) do
     t.string "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "visas", force: :cascade do |t|
+    t.string "name"
+    t.integer "subclass"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "visa_category_id", null: false
+    t.index ["visa_category_id"], name: "index_visas_on_visa_category_id"
   end
 
   create_table "yearly_migration_data", force: :cascade do |t|
@@ -72,4 +86,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_21_021530) do
   end
 
   add_foreign_key "logs", "users"
+  add_foreign_key "visas", "visa_categories"
 end
