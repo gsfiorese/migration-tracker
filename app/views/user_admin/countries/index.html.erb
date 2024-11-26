@@ -1,0 +1,10 @@
+<h1>Countries available</h1>
+
+<p><%= link_to "Add New Country", new_user_admin_country_path%></p>
+<p><%= link_to "Return to Admin Menu ", user_admin_index_path%></p>
+
+<ul>
+  <% @countries.each do |country| %>
+  <li><h3> <%= link_to country.name,  user_admin_country_path(country) %></h3></li>
+  <% end %>
+</ul>

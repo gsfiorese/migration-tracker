@@ -1,0 +1,11 @@
+// This page is for all style sheets asscociated with both user flows
+// eg, cards / components
+// Import base variables and mixins
+@import "base/variables";
+@import "base/mixins";
+
+// Import shared components
+@import "components/cards";
+
+// Import namespace-specific styles
+@import "user_member/visa_categories";
