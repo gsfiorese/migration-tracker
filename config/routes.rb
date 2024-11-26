@@ -4,6 +4,11 @@ Rails.application.routes.draw do
     get "log/index", to: "log#index", as: "log_index"
     get "welcome/index", to: "welcome#index", as: "welcome_index"
 
+    # Add routes for ImportController under user_admin namespace.
+    get "import/index", to: "import#index", as: "import_index"
+    post "import/upload", to: "import#upload", as: "import_upload"
+    post "import/process_import", to: "import#process_import", as: "import_process_import"
+
     # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
     resources :yearly_migration_data, only: [:index]
 
