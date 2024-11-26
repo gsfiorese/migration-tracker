@@ -5,13 +5,13 @@ Rails.application.routes.draw do
     get "welcome/index", to: "welcome#index", as: "welcome_index"
 
     # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
-    resources :yearly_migration_data, only: [:index]
+    resources :yearly_migration_data, only: [ :index ]
+
+    # Add routes for ANZSCO countries
+    resources :countries, only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
 
     # Add routes for ANZSCO Code
     resources :anzsco_codes
-
-    # Add routes for ANZSCO countries
-    resources :countries, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
     # Add routes for user
     resources :users
@@ -19,9 +19,22 @@ Rails.application.routes.draw do
     # Add routes for visa category and visa
     resources :visa_categories do
       resources :visas, except: %i[index edit show update destroy]
-    end
+      end
     resources :visas, only: %i[index edit show update destroy]
   end
+
+    namespace :user_member do
+      get "welcome/index", to: "welcome#index", as: "welcome_index"
+
+      # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
+      resources :yearly_migration_data, only: [ :index ]
+
+      resources :anzsco_codes
+
+      resources :visa_categories do
+        resource :visas
+      end
+    end
 
   # Route for welcome page (root)
   root "welcome#index"
@@ -31,7 +44,7 @@ Rails.application.routes.draw do
   get "/user_member", to: "user_member#index", as: :user_member_index
 
   # Add YearlyMigrationDataController routes at the root level (if needed for welcome#index)
-  resources :yearly_migration_data, only: [:index]
+  resources :yearly_migration_data, only: [ :index ]
 
   # Configuration for Devise to work with Omniauth (Google)
   devise_for :users, controllers: {
