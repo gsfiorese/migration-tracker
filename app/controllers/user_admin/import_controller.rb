@@ -150,7 +150,7 @@ module UserAdmin
     private
 
     def initialize_databases
-      @databases = ["migration_tracker_development", "migration_tracker_test"]
+      @databases = ["migration_tracker_development", "migration_tracker_test", "migration_tracker_production"]
     end
 
     def fetch_tables(database)
