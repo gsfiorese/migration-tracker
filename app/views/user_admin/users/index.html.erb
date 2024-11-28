@@ -1,21 +1,24 @@
-<h1>Users Index</h1>
+<h1 class="text-center">Users Index</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Role</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<div class="users-index">
+  <table>
+    <thead>
       <tr>
-        <td><%= user.email %></td>
-        <td><%= user.role %></td>
-        <td>
-          <%= link_to 'Edit Role', edit_user_admin_user_path(user), class: 'btn btn-primary' %>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td>
+            <%= link_to 'Edit Role', edit_user_admin_user_path(user), class: 'btn btn-primary' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
