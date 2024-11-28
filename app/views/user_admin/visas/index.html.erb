@@ -1,5 +1,7 @@
 <h1>This is visa index page</h1>
 
+<p><%= link_to "Return to Admin Menu ", user_admin_index_path%></p>
+
 <ul>
     <% @visas.each do |visa| %>
       <li><h3> <%= link_to visa.name, user_admin_visa_path(visa) %></h3></li>
