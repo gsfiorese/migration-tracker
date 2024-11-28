@@ -23,6 +23,20 @@
   </head>
 
   <body>
+    <!-- Flash Messages -->
+    <% if flash[:success] %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= flash[:success] %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% elsif flash[:error] %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= flash[:error] %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+
+    <!-- Page Content -->
     <%= yield %>
     <!-- Include custom JavaScript for tabs -->
     <%= javascript_include_tag 'tabs', 'data-turbolinks-track': 'reload' %>
