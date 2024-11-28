@@ -150,7 +150,7 @@ module UserAdmin
     private
 
     def initialize_databases
-      @databases = ["migration_tracker_development", "migration_tracker_test", "migration_tracker_production"]
+      @databases = [ "migration_tracker_development", "migration_tracker_test", "migration_tracker_production" ]
     end
 
     def fetch_tables(database)
@@ -208,7 +208,7 @@ module UserAdmin
       spreadsheet = Roo::Spreadsheet.open(file_path)
       header = spreadsheet.row(1)
       (2..spreadsheet.last_row).each do |i|
-        row = Hash[[header, spreadsheet.row(i)].transpose]
+        row = Hash[[ header, spreadsheet.row(i) ].transpose]
         content << row
       end
       content

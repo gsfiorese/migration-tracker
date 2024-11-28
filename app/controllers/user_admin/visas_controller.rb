@@ -1,6 +1,5 @@
 class UserAdmin::VisasController < ApplicationController
-
-  before_action :set_visa, only: [:show, :update, :edit, :destroy]
+  before_action :set_visa, only: [ :show, :update, :edit, :destroy ]
   before_action :set_visa_category, only: %i[new create]
 
   def index
@@ -37,13 +36,13 @@ class UserAdmin::VisasController < ApplicationController
   def destroy
     @visa_category= @visa.visa_category
     @visa.destroy
-      redirect_to user_admin_visa_category_path(@visa_category) , status: :see_other
+      redirect_to user_admin_visa_category_path(@visa_category), status: :see_other
   end
 
   private
 
   def visa_params
-    params.require(:visa).permit(:name,:subclass)
+    params.require(:visa).permit(:name, :subclass)
   end
 
   def set_visa
@@ -53,5 +52,4 @@ class UserAdmin::VisasController < ApplicationController
   def set_visa_category
     @visa_category = VisaCategory.find(params[:visa_category_id])
   end
-
 end

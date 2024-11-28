@@ -1,7 +1,5 @@
 <h1 class="text-center">Users Index</h1>
 
-<p><%= link_to "Return to Admin Menu ", user_admin_index_path%></p>
-
 <div class="users-index">
   <table>
     <thead>
@@ -23,4 +21,8 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class="return-button">
+    <%= link_to "Return to Admin Menu", user_admin_index_path, class: "admin-link" %>
+  </div>
 </div>

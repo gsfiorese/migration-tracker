@@ -9,12 +9,12 @@ module YearlyMigration
                  .order(migration_value: :desc)
                  .page(params[:page]) # Paginated data
                  .per(15) # Paginate top 15 records for the selected sheet_name
-             else
+      else
                YearlyMigrationDatum
                  .order(created_at: :desc) # Optional: order default view
                  .page(params[:page]) # Paginate data
                  .per(15)
-             end
+      end
 
       { sheet_names: sheet_names, data: data }
     end
