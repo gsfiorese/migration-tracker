@@ -18,74 +18,36 @@
           <%= image_tag "MTLogo.svg", size: "200x100", alt: "Migration Tracker Logo", class: "me-2" %>
         </a>
         <div class="text-end ms-auto">
-        <div class="d-inline-block">
-          <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light me-2" %>
+          <div class="d-inline-block">
+            <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light me-2" %>
+          </div>
+          <div class="d-inline-block">
+            <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-warning" %>
+          </div>
         </div>
-        <div class="d-inline-block">
-          <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-warning" %>
-        </div>
-      </div>
       </div>
     </div>
   </header>
 
   <!-- Tabs Section -->
   <div class="container my-4">
-    <!-- Tab Navigation -->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="australia-tab" data-bs-toggle="tab" data-bs-target="#australia" type="button" role="tab" aria-controls="australia" aria-selected="true">Australia</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="nsw-tab" data-bs-toggle="tab" data-bs-target="#nsw" type="button" role="tab" aria-controls="nsw" aria-selected="false">New South Wales</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="vic-tab" data-bs-toggle="tab" data-bs-target="#vic" type="button" role="tab" aria-controls="vic" aria-selected="false">Victoria</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="qld-tab" data-bs-toggle="tab" data-bs-target="#qld" type="button" role="tab" aria-controls="qld" aria-selected="false">Queensland</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="sa-tab" data-bs-toggle="tab" data-bs-target="#sa" type="button" role="tab" aria-controls="sa" aria-selected="false">South Australia</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="wa-tab" data-bs-toggle="tab" data-bs-target="#wa" type="button" role="tab" aria-controls="wa" aria-selected="false">Western Australia</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="taz-tab" data-bs-toggle="tab" data-bs-target="#taz" type="button" role="tab" aria-controls="taz" aria-selected="false">Tasmania</button>
-      </li>
+      <% ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania"].each do |state| %>
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link <%= "active" if state.parameterize == "australia" %>"
+            id="<%= state.parameterize %>-tab"
+            href="#"
+            data-tab="<%= state.parameterize %>">
+            <%= state %>
+          </a>
+        </li>
+      <% end %>
     </ul>
 
-    <!-- Tab Content -->
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active p-4" id="australia" role="tabpanel" aria-labelledby="australia-tab">
-        <h3>Australia Content</h3>
-        <p>Welcome to the Australia section of Migration Tracker.</p>
-      </div>
-      <div class="tab-pane fade p-4" id="nsw" role="tabpanel" aria-labelledby="nsw-tab">
-        <h3>NSW Content</h3>
-        <p>Welcome to the NSW section of Migration Tracker.</p>
-      </div>
-      <div class="tab-pane fade p-4" id="vic" role="tabpanel" aria-labelledby="vic-tab">
-        <h3>VIC Content</h3>
-        <p>Content for Victoria.</p>
-      </div>
-      <div class="tab-pane fade p-4" id="qld" role="tabpanel" aria-labelledby="qld-tab">
-        <h3>QLD Content</h3>
-        <p>Welcome to the Queensland section of Migration Tracker.</p>
-      </div>
-      <div class="tab-pane fade p-4" id="sa" role="tabpanel" aria-labelledby="sa-tab">
-        <h3>SA Content</h3>
-        <p>Content for South Australia.</p>
-      </div>
-      <div class="tab-pane fade p-4" id="wa" role="tabpanel" aria-labelledby="wa-tab">
-        <h3>WA Content</h3>
-        <p>Content for Western Australia.</p>
-      </div>
-      <div class="tab-pane fade p-4" id="taz" role="tabpanel" aria-labelledby="taz-tab">
-        <h3>Tasmania Content</h3>
-        <p>Content for Tasmania.</p>
-      </div>
+      <div class="loading-message text-center mt-4">Select a tab to view data.</div>
+      <div class="data-container mt-4"></div>
     </div>
   </div>
 
