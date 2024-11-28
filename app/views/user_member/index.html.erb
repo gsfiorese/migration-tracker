@@ -14,6 +14,7 @@
           <div class="card">
             <h5 class="card-title"><%= category.name %></h5>
             <p class="card-text"><%= category.about %></p>
+            <%= link_to "View more", user_member_visa_category_visas_path, class: "btn" %>
           </div>
         </div>
     <% end %>

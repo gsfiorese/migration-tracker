@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       resources :anzsco_codes
 
       resources :visa_categories do
-        resource :visas
+        resources :visas
       end
     end
 
