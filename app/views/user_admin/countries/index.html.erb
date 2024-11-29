@@ -1,10 +1,25 @@
-<h1>Countries available</h1>
+<div class="countries-index">
+  <h1>Countries Available</h1>
 
-<p><%= link_to "Add New Country", new_user_admin_country_path%></p>
-<p><%= link_to "Return to Admin Menu ", user_admin_index_path%></p>
+  <div class="actions">
+    <%= link_to "Add New Country", new_user_admin_country_path, class: "btn" %>
+    <%= link_to "Return to Admin Menu", user_admin_index_path, class: "btn" %>
+  </div>
 
-<ul>
-  <% @countries.each do |country| %>
-  <li><h3> <%= link_to country.name,  user_admin_country_path(country) %></h3></li>
-  <% end %>
-</ul>
+  <table class="countries-table">
+    <thead>
+      <tr>
+        <th>Country Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @countries.each do |country| %>
+        <tr>
+          <td>
+            <%= link_to country.name, user_admin_country_path(country) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

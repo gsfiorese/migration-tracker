@@ -1,12 +1,17 @@
-<h1>Welcome, Admin!</h1>
-<p>This is the admin dashboard for managing the application.</p>
+<div class="admin-dashboard">
+  <h1>Welcome, Admin!</h1>
+  <p>This is the admin dashboard for managing the application.</p>
 
-<%= link_to "Countries Index", user_admin_countries_path, id: "admin-welcome-link", class: "btn btn-danger" %>
-<%= link_to "Anzsco Code Index", user_admin_anzsco_codes_path, id: "admin-welcome-link", class: "btn btn-danger" %>
-<%= link_to "Visa Categories Index", user_admin_visa_categories_path, id: "admin-welcome-link", class: "btn btn-danger" %>
-<%= link_to "Visa Index", user_admin_visas_path, id: "admin-welcome-link", class: "btn btn-danger" %>
-<%= link_to "User Index View", user_admin_users_path, id: "admin-welcome-link", class: "btn btn-danger" %>
-<%= link_to "Cases Index View", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
-<%= link_to "Logs Index View", user_admin_log_index_path, id: "admin-logout-link", class: "btn btn-danger" %>
-<%= link_to "Welcome Info Index View", user_admin_welcome_index_path, id: "admin-welcome-link", class: "btn btn-danger" %>
-<%= link_to "Log Off", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
+
+  <%= link_to "Countries Index", user_admin_countries_path, class: "btn" %>
+  <%= link_to "Anzsco Code Index", user_admin_anzsco_codes_path, class: "btn" %>
+  <%= link_to "Visa Categories Index", user_admin_visa_categories_path, class: "btn" %>
+  <%= link_to "Visa Index", user_admin_visas_path, class: "btn" %>
+  <%= link_to "User Index View", user_admin_users_path, class: "btn" %>
+  <%= link_to "Cases Index View", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn" %>
+  <%= link_to "Logs Index View", user_admin_log_index_path, class: "btn" %>
+  <%= link_to "Welcome Info Index View", user_admin_welcome_index_path, class: "btn" %>
+  <%= link_to "Import", user_admin_import_index_path, id: "import-link", class: "btn btn-danger" %>            
+  <%= link_to "Log Off", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn log-off" %>
+</div>
+

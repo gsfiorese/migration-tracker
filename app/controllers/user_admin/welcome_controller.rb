@@ -1,10 +1,19 @@
 module UserAdmin
   class WelcomeController < ApplicationController
+    include SheetNameSetter
+
     def index
-      migration_controller = YearlyMigration::YearlyMigrationDataController.new
-      result = migration_controller.fetch_data(params)
-      @sheet_names = result[:sheet_names]
-      @data = result[:data]
+      set_sheet_names
+      @data = if params[:sheet_name].present?
+                YearlyMigrationDatum.where(sheet_name: params[:sheet_name])
+                                    .order(migration_value: :desc)
+                                    .page(params[:page])
+                                    .per(15)
+              else
+                YearlyMigrationDatum.order(created_at: :desc)
+                                    .page(params[:page])
+                                    .per(15)
+              end
     end
   end
 end
