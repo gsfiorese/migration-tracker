@@ -1,0 +1,10 @@
+<h2>Visas for <%= @visa_category.name %></h2>
+
+<ul>
+  <% @visas.each do |visa| %>
+    <li>
+      <strong>Name:</strong> <%= visa.name %>
+      <strong>Subclass:</strong> <%= visa.subclass %>
+    </li>
+  <% end %>
+</ul>
