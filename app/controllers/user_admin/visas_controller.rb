@@ -1,4 +1,5 @@
 class UserAdmin::VisasController < ApplicationController
+
   before_action :set_visa, only: [:show, :update, :edit, :destroy]
   before_action :set_visa_category, only: %i[index new create]
   before_action :authorize_admin
@@ -60,4 +61,5 @@ class UserAdmin::VisasController < ApplicationController
   def authorize_admin
     redirect_to root_path, alert: 'Access denied. Admins only.' unless current_user&.admin?
   end
+
 end

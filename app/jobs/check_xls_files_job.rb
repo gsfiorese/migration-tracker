@@ -30,7 +30,7 @@ class CheckXlsFilesJob < ApplicationJob
     xls = Roo::Excelx.new(file)
 
     xls.sheets.each do |sheet|
-      next if sheet.downcase == 'contents' # Skip irrelevant sheets
+      next if sheet.downcase == "contents" # Skip irrelevant sheets
 
       xls.default_sheet = sheet
       years = xls.row(1)[2..-1].map(&:to_s)
