@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Migration Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.each do |record| %>
+      <tr>
+        <td><%= record.country_name %></td> <!-- Use country_name here -->
+        <td><%= record.migration_value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

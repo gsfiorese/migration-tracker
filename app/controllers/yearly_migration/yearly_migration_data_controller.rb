@@ -1,22 +1,66 @@
 module YearlyMigration
   class YearlyMigrationDataController < ApplicationController
-    def fetch_data(params)
-      sheet_names = YearlyMigrationDatum.distinct.pluck(:sheet_name)
+    before_action :set_sheet_names, only: [:index, :fetch_tab_data]
 
-      data = if params[:sheet_name].present?
-               YearlyMigrationDatum
-                 .where(sheet_name: params[:sheet_name])
-                 .order(migration_value: :desc)
-                 .page(params[:page]) # Paginated data
-                 .per(15) # Paginate top 15 records for the selected sheet_name
+    # Handles HTML requests for standard views
+    def index
+      result = fetch_data(params)
+      @sheet_names = result[:sheet_names]
+      @data = result[:data]
+
+      respond_to do |format|
+        format.html # Render the standard index.html.erb
+      end
+    end
+
+    # Handles JSON requests for tab-based functionality
+    def fetch_tab_data
+      if params[:s_sheet_name].present?
+        # Normalize input and perform the mapping
+        sanitized_name = params[:s_sheet_name].strip.titleize
+        puts "Sanitized Tab Name: #{sanitized_name}"
+
+        sheet_name = SHEET_NAME_MAPPING[sanitized_name]
+        puts "Mapped Sheet Name: #{sheet_name}"
+
+        @data = if sheet_name.present?
+                  YearlyMigrationDatum.where(sheet_name: sheet_name)
+                                      .order(migration_value: :desc)
+                                      .page(params[:page])
+                else
+                  []
+                end
       else
-               YearlyMigrationDatum
-                 .order(created_at: :desc) # Optional: order default view
-                 .page(params[:page]) # Paginate data
-                 .per(15)
+        @data = YearlyMigrationDatum.all
       end
 
-      { sheet_names: sheet_names, data: data }
+      respond_to do |format|
+        format.json do
+          render json: { html: render_to_string(partial: "list", formats: [:html], locals: { data: @data }) }
+        end
+      end
+    end
+
+
+    def fetch_data(params)
+      data = if params[:sheet_name].present?
+               YearlyMigrationDatum.where(sheet_name: params[:sheet_name])
+                                   .order(migration_value: :desc)
+                                   .page(params[:page])# Paginated data
+                                   .per(15) # Paginate top 15 records for the selected sheet_name
+             else
+               YearlyMigrationDatum.order(created_at: :desc) # Optional: order default view
+                                   .page(params[:page])# Paginate data
+                                   .per(15)
+             end
+
+      { sheet_names: @sheet_names, data: data }
+    end
+
+    private
+
+    def set_sheet_names
+      @sheet_names = YearlyMigrationDatum.distinct.pluck(:sheet_name)
     end
   end
 end

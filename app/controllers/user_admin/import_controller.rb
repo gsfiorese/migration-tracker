@@ -153,35 +153,27 @@ module UserAdmin
       @databases = [ "migration_tracker_development", "migration_tracker_test", "migration_tracker_production" ]
     end
 
-    def fetch_tables(database)
-      query = <<~SQL
-        SELECT table_name
-        FROM information_schema.tables
-        WHERE table_catalog = '#{database}' AND table_schema = 'public'
-        ORDER BY table_name
-      SQL
+    # Fetch tables using ActiveRecord
+    def fetch_tables(_database)
+      ActiveRecord::Base.connection.tables
+    end
 
-      result = ActiveRecord::Base.connection.execute(query)
-      result.map { |row| row["table_name"] } if result.present?
+    # Fetch fields using ActiveRecord
+    def fetch_fields(_database, table)
+      return [] unless ActiveRecord::Base.connection.table_exists?(table)
+
+      ActiveRecord::Base.connection.columns(table).map do |column|
+        {
+          column_name: column.name,
+          data_type: column.sql_type,
+          is_nullable: column.null
+        }
+      end
     rescue => e
-      Rails.logger.error "Error fetching tables for database #{database}: #{e.message}"
+      Rails.logger.error "Error fetching fields for table #{table}: #{e.message}"
       []
     end
 
-    def fetch_fields(database, table)
-      query = <<~SQL
-        SELECT column_name, data_type, is_nullable, character_maximum_length
-        FROM information_schema.columns
-        WHERE table_catalog = '#{database}' AND table_name = '#{table}' AND table_schema = 'public'
-        ORDER BY ordinal_position
-      SQL
-
-      result = ActiveRecord::Base.connection.execute(query)
-      result.to_a if result.present?
-    rescue => e
-      Rails.logger.error "Error fetching fields for table #{table} in database #{database}: #{e.message}"
-      []
-    end
 
     def parse_file(file_path)
       file_extension = File.extname(file_path)

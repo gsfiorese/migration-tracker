@@ -44,14 +44,14 @@
       </tr>
     </thead>
     <tbody>
-      <% @fields.each do |field| %>
-        <tr>
-          <td><%= field["column_name"] %></td>
-          <td><%= field["data_type"] %></td>
-          <td><%= field["is_nullable"] %></td>
-          <td><%= field["character_maximum_length"] || "N/A" %></td>
-        </tr>
-      <% end %>
+    <% @fields.each do |field| %>
+      <tr>
+        <td><%= field[:column_name] %></td>
+        <td><%= field[:data_type] %></td>
+        <td><%= field[:is_nullable] ? "Yes" : "No" %></td>
+        <td><%= field[:character_maximum_length] || "N/A" %></td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 <% end %>
@@ -103,7 +103,7 @@
         <%= label_tag header, header, class: "form-label" %>
         <span class="mx-2">---></span>
         <%= select_tag "mapping[#{header}]",
-            options_for_select(@fields.map { |field| [field["column_name"], field["column_name"]] }),
+        options_for_select(@fields.map { |field| [field[:column_name], field[:column_name]] }),
             include_blank: "Select Field",
             class: "form-select" %>
       </div>
