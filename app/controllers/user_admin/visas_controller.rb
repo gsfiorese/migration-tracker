@@ -1,10 +1,10 @@
 class UserAdmin::VisasController < ApplicationController
   before_action :set_visa, only: [:show, :update, :edit, :destroy]
-  before_action :set_visa_category, only: %i[index new create]
+  before_action :set_visa_category, only: %i[new create]
   before_action :authorize_admin
 
   def index
-    @visas = @visa_category.visas # Fetch visas for the specific visa category
+    @visas = Visa.all # Fetch visas for the specific visa category
   end
 
   def new
