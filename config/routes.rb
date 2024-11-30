@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # Routes for user_admin namespace
   namespace :user_admin do
     get "log/index", to: "log#index", as: "log_index"
@@ -60,13 +61,12 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   # Routes for footer headings
-
-  get "/about", to: "pages#about", as: "about"
-  get "/contact", to: "pages#contact", as: "contact"
-  get "/employment", to: "pages#employment", as: "employment"
-  get "/resources", to: "pages#resources", as: "resources"
-  get "/privacy-policy", to: "pages#privacy_policy", as: "privacy_policy"
-  get "/terms-of-service", to: "pages#terms_of_service", as: "terms_of_service"
+  get '/about', to: 'pages#about', as: 'about'
+  get '/contact', to: 'pages#contact', as: 'contact'
+  get '/employment', to: 'pages#employment', as: 'employment'
+  get '/resources', to: 'pages#resources', as: 'resources'
+  get '/privacy-policy', to: 'pages#privacy_policy', as: 'privacy_policy'
+  get '/terms-of-service', to: 'pages#terms_of_service', as: 'terms_of_service'
 
   # Route from welcome page to user/member page
 

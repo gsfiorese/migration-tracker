@@ -27,11 +27,12 @@ class ApplicationController < ActionController::Base
 
   def log_request
     LoggerService.log_action(
-      log_type: "info",
+      log_type: 'info',
       message: "#{action_name} action called in #{controller_name}",
       user: current_user,
       source: "#{controller_name}##{action_name}",
       context: { params: params.to_unsafe_h }
     )
   end
+
 end

@@ -1,10 +1,8 @@
 <h1>Logs</h1>
 <p>This is the admin logs dashboard for managing the application.</p>
 
-  <div class="return-button">
-    <%= link_to "Return to Admin Menu", user_admin_index_path, class: "admin-link" %>
-  </div>
-</div>
+<p><%= link_to "Return to Admin Menu ", user_admin_index_path%></p>
+
 <% if @logs.any? %>
   <table class="table">
     <thead>
