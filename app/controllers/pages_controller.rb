@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+  def no_navbar_page
+    @hide_navbar = true
+  end
+
   def about
   end
 
