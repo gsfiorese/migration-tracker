@@ -22,7 +22,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100"> <!-- Add flex layout to body -->
+    <!-- Navbar -->
+  <% unless request.path == "/" || request.path == "/users/sign_in" %>
+    <%= render "shared/navbar" %>
+  <% end %>
+
     <!-- Flash Messages -->
     <% if flash[:success] %>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -36,8 +41,15 @@
       </div>
     <% end %>
 
-    <!-- Page Content -->
-    <%= yield %>
+    <!-- Main Content Wrapper -->
+    <div class="flex-fill">
+      <!-- Page Content -->
+      <%= yield %>
+    </div>
+
+    <!-- Footer -->
+    <%= render "shared/footer" %>
+
     <!-- Include custom JavaScript for tabs -->
     <%= javascript_include_tag 'tabs', 'data-turbolinks-track': 'reload' %>
   </body>
