@@ -1,11 +1,4 @@
-import { Application } from "@hotwired/stimulus"
-import LogController from "./controllers/log_controller"
+import { Application } from "@hotwired/stimulus";
 
-const application = Application.start()
-application.register("log", LogController)
-
-// Configure Stimulus development experience
-application.debug = true
-window.Stimulus   = application
-
-export { application }
+const application = Application.start();
+export default application;
