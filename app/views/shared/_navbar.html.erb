@@ -7,10 +7,7 @@
         </a>
         <div class="text-end ms-auto">
           <div class="d-inline-block">
-            <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light me-2" %>
-          </div>
-          <div class="d-inline-block">
-            <%= link_to "Log out ", new_user_registration_path, class: "btn btn-danger" %>
+            <%= link_to "Log out ", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
           </div>
         </div>
       </div>
