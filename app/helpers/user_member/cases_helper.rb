@@ -1,0 +1,2 @@
+module UserMember::CasesHelper
+end

@@ -1,0 +1,53 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  country: one
+  anzsco_code: one
+  visa: one
+  lodgement_date: 2024-11-30
+  co_contact_date: 2024-11-30
+  co_response_date: 2024-11-30
+  grant_date: 2024-11-30
+  assess_commence: 2024-11-30
+  grant_days: 1
+  days_to_co_contact: 1
+  days_grant_aftr_co_contact: 1
+  work_p_claim: 1
+  total_p: 1
+  days_aftr_assess: 1
+  on_shore: false
+  case_status: false
+  agency: false
+  employment_verification: false
+  active: false
+  sponsor_state: MyString
+  documents: MyString
+  co_contact_type: MyString
+  engl_prof: MyString
+
+two:
+  user: two
+  country: two
+  anzsco_code: two
+  visa: two
+  lodgement_date: 2024-11-30
+  co_contact_date: 2024-11-30
+  co_response_date: 2024-11-30
+  grant_date: 2024-11-30
+  assess_commence: 2024-11-30
+  grant_days: 1
+  days_to_co_contact: 1
+  days_grant_aftr_co_contact: 1
+  work_p_claim: 1
+  total_p: 1
+  days_aftr_assess: 1
+  on_shore: false
+  case_status: false
+  agency: false
+  employment_verification: false
+  active: false
+  sponsor_state: MyString
+  documents: MyString
+  co_contact_type: MyString
+  engl_prof: MyString
