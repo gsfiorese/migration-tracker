@@ -1,5 +1,5 @@
 class UserAdmin::UsersController < ApplicationController
-    before_action :set_user, only: [ :edit, :update, :destroy ]
+    before_action :set_user, only: [:edit, :update, :destroy]
 
     # GET /admins/users
     def index
@@ -20,7 +20,7 @@ class UserAdmin::UsersController < ApplicationController
     def destroy
       @user = User.find(params[:id])
       @user.destroy
-      redirect_to admins_users_path, notice: "User was successfully deleted."
+      redirect_to admins_users_path, notice: 'User was successfully deleted.'
     end
 
     private

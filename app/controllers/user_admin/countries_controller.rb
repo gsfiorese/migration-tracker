@@ -1,4 +1,5 @@
 class UserAdmin::CountriesController < ApplicationController
+
   def index
     @countries = Country.all
   end
@@ -15,6 +16,7 @@ class UserAdmin::CountriesController < ApplicationController
     @country = Country.new(country_params)
     @country.save
     redirect_to user_admin_countries_path(@country)
+
   end
 
   def edit
@@ -38,4 +40,5 @@ class UserAdmin::CountriesController < ApplicationController
   def country_params
     params.require(:country).permit(:name)
   end
+
 end

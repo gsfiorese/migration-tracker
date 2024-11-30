@@ -46,11 +46,11 @@ module YearlyMigration
       data = if params[:sheet_name].present?
                YearlyMigrationDatum.where(sheet_name: params[:sheet_name])
                                    .order(migration_value: :desc)
-                                   .page(params[:page])# Paginated data
-                                   .per(15) # Paginate top 15 records for the selected sheet_name
+                                   .page(params[:page])
+                                   .per(15)
              else
-               YearlyMigrationDatum.order(created_at: :desc) # Optional: order default view
-                                   .page(params[:page])# Paginate data
+               YearlyMigrationDatum.order(created_at: :desc)
+                                   .page(params[:page])
                                    .per(15)
              end
 
