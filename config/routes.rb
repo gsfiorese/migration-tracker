@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :visa_categories, only: [:index, :show] do
       resources :visas, only: [:index] # Nested route for visas related to a specific category
     end
+  end
 
   # Add namespace for YearlyMigration
   namespace :yearly_migration do
@@ -52,9 +53,6 @@ Rails.application.routes.draw do
         get :fetch_tab_data # Route for AJAX-based tab functionality
       end
     end
-  end
-
-    resources :visas, only: [:index] # Global list of visas for members (optional if needed)
   end
 
   # Route for welcome page (root)
