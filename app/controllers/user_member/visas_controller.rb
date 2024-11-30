@@ -14,7 +14,7 @@ class UserMember::VisasController < ApplicationController
 
   def authorize_member
     unless current_user&.member? || current_user&.admin?
-      redirect_to root_path, alert: 'Access denied. Members only.'
+      redirect_to root_path, alert: "Access denied. Members only."
     end
   end
 end
