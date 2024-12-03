@@ -11,7 +11,5 @@
   <%= link_to "Cases Index View", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn" %>
   <%= link_to "Logs Index View", user_admin_log_index_path, class: "btn" %>
   <%= link_to "Welcome Info Index View", user_admin_welcome_index_path, class: "btn" %>
-  <%= link_to "Import", user_admin_import_index_path, id: "import-link", class: "btn btn-danger" %>            
-  <%= link_to "Log Off", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn log-off" %>
+  <%= link_to "Import", user_admin_import_index_path, id: "import-link", class: "btn btn-danger" %>
 </div>
-

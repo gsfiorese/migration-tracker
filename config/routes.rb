@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :visa_categories, only: [:index, :show] do
       resources :visas, only: [:index] # N  ested route for visas related to a specific category
     end
+  end
 
     # Add namespace for YearlyMigration
     namespace :yearly_migration do
