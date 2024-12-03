@@ -42,7 +42,6 @@ Rails.application.routes.draw do
     resources :visa_categories, only: [:index, :show] do
       resources :visas, only: [:index] # N  ested route for visas related to a specific category
     end
-  end
 
     # Add namespace for YearlyMigration
     namespace :yearly_migration do
@@ -56,7 +55,7 @@ Rails.application.routes.draw do
     resources :visas, only: [:index] # Global list of visas for members (optional if needed)
 
     resources :cases, only: [:index, :new, :create, :show]
-
+  end
 
   # Route for welcome page (root)
   root "welcome#index"
