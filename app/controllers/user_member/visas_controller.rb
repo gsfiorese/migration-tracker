@@ -9,8 +9,13 @@ class UserMember::VisasController < ApplicationController
   private
 
   def set_visa_category
-    @visa_category = VisaCategory.find(params[:visa_category_id])
+    if params[:visa_category_id].present?
+      @visa_category = VisaCategory.find(params[:visa_category_id])
+    else
+      redirect_to user_member_visa_categories_path, alert: "Visa category not specified."
+    end
   end
+
 
   def authorize_member
     unless current_user&.member? || current_user&.admin?

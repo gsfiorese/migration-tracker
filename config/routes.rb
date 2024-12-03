@@ -24,7 +24,6 @@ Rails.application.routes.draw do
 
     # Add routes for visa category and visa
     resources :visa_categories do
-
       resources :visas, except: %i[index edit show update destroy]
     end
     resources :visas, only: %i[index edit show update destroy]
@@ -34,26 +33,30 @@ Rails.application.routes.draw do
   namespace :user_member do
     get "welcome/index", to: "welcome#index", as: "welcome_index"
 
-
     # Add routes for YearlyMigrationData under user_member (if needed for direct access)
     resources :yearly_migration_data, only: [:index]
 
     resources :anzsco_codes
 
-     # Member-specific visa_categories with nested visas
+    # Member-specific visa_categories with nested visas
     resources :visa_categories, only: [:index, :show] do
-      resources :visas, only: [:index] # Nested route for visas related to a specific category
+      resources :visas, only: [:index] # N  ested route for visas related to a specific category
     end
   end
 
-  # Add namespace for YearlyMigration
-  namespace :yearly_migration do
-    resources :yearly_migration_data, only: [:index] do
-      collection do
-        get :fetch_tab_data # Route for AJAX-based tab functionality
+    # Add namespace for YearlyMigration
+    namespace :yearly_migration do
+      resources :yearly_migration_data, only: [:index] do
+        collection do
+          get :fetch_tab_data # Route for AJAX-based tab functionality
+        end
       end
     end
-  end
+
+    resources :visas, only: [:index] # Global list of visas for members (optional if needed)
+
+    resources :cases, only: [:index, :new, :create, :show]
+
 
   # Route for welcome page (root)
   root "welcome#index"

@@ -2,12 +2,12 @@
 
 <ul>
   <% @visas.each do |visa| %>
-    <li class="visa-item">
-      <strong>Name:</strong> <%= visa.name %><br>
-      <strong>Subclass:</strong> <%= visa.subclass %><br>
-      <strong>Description:</strong> <%= visa.about %><br>
-      <strong>Eligibility:</strong> <%= visa.eligibility %><br>
-      <strong>Duration:</strong> <%= visa.duration %>
+
+    <li>
+      <strong>Name:</strong> <%= visa.name %>
+      <strong>Subclass:</strong> <%= visa.subclass %>
+      <%= link_to "Add a case", new_user_member_case_path(visa_id: visa.id), data: { turbo: false }, class: "btn" %>
+      <%= link_to "View cases", user_member_cases_path(visa_id: visa.id), class: "btn" %>
     </li>
   <% end %>
 </ul>
