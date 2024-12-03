@@ -1,0 +1,118 @@
+<%= form_with(model: @case, url: user_member_cases_path, local: true, data: { turbo: false }) do |form| %>
+
+  <% if @case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@case.errors.count, "error") %> prohibited this case from being saved:</h2>
+      <ul>
+        <% @case.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :country_id, "Country" %>
+    <%= form.collection_select :country_id, Country.all, :id, :name, prompt: "Select a country" %>
+  </div>
+
+  <div>
+    <%= form.label :anzsco_code_id, "ANZSCO Code" %>
+    <%= form.collection_select :anzsco_code_id, AnzscoCode.all, :id, ->(anzsco) { "#{anzsco.anzsco_code} - #{anzsco.occupation}" }, prompt: "Select an ANZSCO code" %>
+  </div>
+
+  <div>
+    <%= form.label :visa_id, "Visa" %>
+    <%= form.hidden_field :visa_id, value: params[:visa_id] %>
+    <p><strong>Visa:</strong> <%= Visa.find(params[:visa_id]).name %></p>
+  </div>
+
+  <div>
+    <%= form.label :lodgement_date, "Lodgement Date" %>
+    <%= form.date_field :lodgement_date, id: "lodgement_date", onchange: "updateGrantDays()", class: "calendar" %>
+  </div>
+
+  <div>
+    <%= form.label :co_response_date, "CO Response Date" %>
+    <%= form.date_field :co_response_date, id: "co_response_date", class: "calendar", onchange: "updateDaysToCoContact()" %>
+  </div>
+
+  <div>
+    <%= form.label :grant_date, "Grant Date" %>
+    <%= form.date_field :grant_date, id: "grant_date", class: "calendar" %>
+  </div>
+
+  <div>
+    <%= form.label :grant_days, "Grant Days" %>
+    <%= form.number_field :grant_days, id: "grant_days", disabled: true, onchange: "updateGrantDays(); updateDaysGrantAfterCoContact()" %>
+  </div>
+
+  <div>
+    <%= form.label :days_to_co_contact, "Days to CO Contact" %>
+    <%= form.number_field :days_to_co_contact, id: "days_to_co_contact", disabled: true %>
+  </div>
+
+  <div>
+    <%= form.label :days_grant_aftr_co_contact, "Days Grant After CO Contact" %>
+    <%= form.number_field :days_grant_aftr_co_contact, id: "days_grant_aftr_co_contact", disabled: true %>
+  </div>
+
+  <div>
+    <%= form.label :work_p_claim, "Work Points Claimed" %>
+    <%= form.number_field :work_p_claim %>
+  </div>
+
+  <div>
+    <%= form.label :total_p, "Total Points" %>
+    <%= form.number_field :total_p %>
+  </div>
+
+  <div>
+    <%= form.label :days_aftr_assess, "Days After Last Login" %>
+    <%= form.number_field :days_aftr_assess, disabled: true, value: (current_user.last_login_at ? (Time.zone.now.to_date - current_user.last_login_at.to_date).to_i : 0) %>
+  </div>
+
+  <div>
+    <%= form.label :on_shore, "Onshore/Offshore" %>
+    <%= form.select :on_shore, [["Onshore", true], ["Offshore", false]], prompt: "Select location" %>
+  </div>
+
+  <div>
+    <%= form.label :case_status, "Case Status" %>
+    <%= form.text_field :case_status %>
+  </div>
+
+  <div>
+    <%= form.label :agency, "Agency" %>
+    <%= form.text_field :agency %>
+  </div>
+
+  <div>
+    <%= form.label :employment_verification, "Employment Verification" %>
+    <%= form.select :employment_verification, [["Yes", true], ["No", false]], prompt: "Select verification status" %>
+  </div>
+
+  <div>
+    <%= form.label :sponsor_state, "Sponsor State" %>
+    <%= form.select :sponsor_state, ["NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT", "None"], prompt: "Select sponsor state" %>
+  </div>
+
+  <div>
+    <%= form.label :documents, "Documents" %>
+    <%= form.text_field :documents %>
+  </div>
+
+  <div>
+    <%= form.label :co_contact_type, "CO Contact Type" %>
+    <%= form.select :co_contact_type, ["Email", "Phone", "Text Message"], prompt: "Select contact type" %>
+  </div>
+
+  <div>
+    <%= form.label :engl_prof, "English Proficiency" %>
+    <%= form.text_field :engl_prof %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Case", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,14 +1,17 @@
-import "@hotwired/turbo-rails"
-import { Application } from "@hotwired/stimulus"
-import { definitionsFromContext } from "controllers"
-import "bootstrap"
-import "../stylesheets/application.scss"
+import "@hotwired/turbo-rails"; // Turbo for seamless navigation
+import { Application } from "@hotwired/stimulus";
+import { definitionsFromContext } from "controllers";
+import "bootstrap"; // Load Bootstrap
+import "../stylesheets/application.scss"; // Import your SCSS
+import "cases_form"; // Import the file from Importmap
+console.log("cases_form.js imported");
+
 
 // Stimulus setup
-const application = Application.start()
-const context = require.context("controllers", true, /\.js$/)
-application.load(definitionsFromContext(context))
+const application = Application.start();
+const context = require.context("controllers", true, /\.js$/);
+application.load(definitionsFromContext(context));
 
-// config Rails UJS
-import Rails from "@rails/ujs"
-Rails.start()
+// Rails UJS (if needed)
+import Rails from "@rails/ujs";
+Rails.start();
