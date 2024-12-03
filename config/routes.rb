@@ -56,7 +56,7 @@ Rails.application.routes.draw do
     resources :visas, only: [:index] # Global list of visas for members (optional if needed)
 
     resources :cases, only: [:index, :new, :create, :show]
-  end
+
 
   # Route for welcome page (root)
   root "welcome#index"
