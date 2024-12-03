@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_30_091358) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_30_051143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,9 +105,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_091358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "visa_category_id", null: false
-    t.string "about"
-    t.string "eligibility"
-    t.string "duration"
     t.index ["visa_category_id"], name: "index_visas_on_visa_category_id"
   end
 
