@@ -1,8 +1,8 @@
 header.p-2.text-bg-dark {
   background: linear-gradient(45deg, #000, #495057); // Gradient background
-  padding: 0; // Reduced padding for a more compact header
-  position: sticky; // Sticky to the top
-  top: -1px;
+  padding: 0.25rem 0; // Reduced padding for a more compact header
+  position: fixed; // Sticky to the top
+  top: 0px;
   left: 0;
   width: 100%;
   z-index: 1000; // Ensure it stays above other content
