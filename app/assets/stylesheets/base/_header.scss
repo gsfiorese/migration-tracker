@@ -1,9 +1,17 @@
 header.p-2.text-bg-dark {
   background: linear-gradient(45deg, #000, #495057); // Gradient background
-  padding: 5px 0; // Reduced padding for a more compact header
-  position: sticky; // Keep the navbar fixed at the top of the page
-  top: 0;
-  z-index: 100; // Ensure it stays above other content
+  padding: 0; // Reduced padding for a more compact header
+  position: sticky; // Sticky to the top
+  top: -1px;
+  left: 0;
+  width: 100%;
+  z-index: 1000; // Ensure it stays above other content
+  margin: 0;
+  transition: background 0.3s ease; // Smooth transition for the hover effect
+
+  &:hover {
+    background: linear-gradient(45deg, #495057, #000); // Lighter gradient on hover
+  }
 
   .container {
     max-width: 1200px; // Center content within a maximum width
@@ -20,7 +28,7 @@ header.p-2.text-bg-dark {
   }
 
   img.me-2.logo {
-    height: 50px; // Smaller logo for a more compact design
+    height: 150px; // Smaller logo for a more compact design
     width: auto; // Maintain the aspect ratio
     filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2)); // Subtle shadow effect
     vertical-align: middle; // Vertically align the image within the header
@@ -62,5 +70,12 @@ header.p-2.text-bg-dark {
         background: #c9302c;
       }
     }
+  }
+}
+
+// Queries
+@media (max-width: 768px) {
+  img.me-2.logo {
+    height: 50px; // Smaller logo for smaller screens
   }
 }
