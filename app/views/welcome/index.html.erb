@@ -8,59 +8,61 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="padding-top: 220px;">
+<body>
 
-<!-- Header with logo, navigation, search, and buttons -->
-<header class="p-2 text-bg-dark">
-  <div class="container">
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="/" class="d-flex align-items-center text-white text-decoration-none">
-        <%= image_tag "Migration.png", alt: "Migration Tracker Logo", class: "me-2 logo" %>
-      </a>
-      <div class="text-end">
-        <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light me-2" %>
-        <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-warning" %>
+  <!-- Header with logo, navigation, search, and buttons -->
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <%= image_tag "MTLogo.svg", size: "200x100", alt: "Migration Tracker Logo", class: "me-2" %>
+        </a>
+        <div class="text-end ms-auto">
+          <div class="d-inline-block">
+            <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light me-2" %>
+          </div>
+          <div class="d-inline-block">
+            <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-warning" %>
+          </div>
+        </div>
       </div>
     </div>
+  </header>
+
+  <!-- Tabs Section -->
+  <div class="container my-4">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <% ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania"].each do |state| %>
+        <li class="nav-item" role="presentation">
+          <a
+            class="nav-link <%= "active" if state.parameterize == "australia" %>"
+            id="<%= state.parameterize %>-tab"
+            href="#"
+            data-tab="<%= state.parameterize %>">
+            <%= state %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="loading-message text-center mt-4">Select a tab to view data.</div>
+      <div class="data-container mt-4"></div>
+    </div>
   </div>
-</header>
 
-
-<!-- Tabs Section -->
-<div class="container my-4">
-  <ul class="nav nav-tabs" id="myTab" role="tablist" data-controller="tabs">
-    <% ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania"].each_with_index do |state, index| %>
-      <li class="nav-item" role="presentation">
-        <button
-          class="nav-link <%= 'active' if index == 0 %>"
-          id="<%= state.parameterize %>-tab"
-          type="button"
-          role="tab"
-          aria-controls="<%= state.parameterize %>"
-          data-sheet-name="<%= state.parameterize %>"
-          data-action="click->tabs#load"
-          aria-selected="<%= index == 0 %>">
-          <%= state %>
-        </button>
-      </li>
-    <% end %>
-  </ul>
-
-  <div class="tab-content" id="myTabContent">
-    <% ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania"].each_with_index do |state, index| %>
-      <div
-        class="tab-pane fade <%= 'show active' if index == 0 %>"
-        id="<%= state.parameterize %>"
-        role="tabpanel"
-        aria-labelledby="<%= state.parameterize %>-tab">
-        <div class="loading-message text-center mt-4">Loading...</div>
-        <div class="data-container mt-4"></div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
+  <!-- Footer Section -->
+  <footer class="bg-light text-center py-3 mt-auto">
+    <nav class="mb-2">
+      <%= link_to 'About', about_path, class: 'text-dark mx-2' %>
+      <%= link_to 'Contact', contact_path, class: 'text-dark mx-2' %>
+      <%= link_to 'Employment', employment_path, class: 'text-dark mx-2' %>
+      <%= link_to 'Resources', resources_path, class: 'text-dark mx-2' %>
+      <%= link_to 'Privacy Policy', privacy_policy_path, class: 'text-dark mx-2' %>
+      <%= link_to 'Terms of Service', terms_of_service_path, class: 'text-dark mx-2' %>
+    </nav>
+    <p class="small text-muted">© 2024 Migration Tracker INC. All rights reserved. Immitracker Inc. doesn't provide any immigration advice.</p>
+  </footer>
 
   <!-- Bootstrap JS Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
