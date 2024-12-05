@@ -1,4 +1,6 @@
-import { Application } from "@hotwired/stimulus";
+//this is application.js file
+import { Application } from "@hotwired/stimulus"
+import LogController from "./controllers/log_controller"
 
 const application = Application.start();
 export default application;
