@@ -27,7 +27,7 @@
     <p><strong>Visa:</strong> <%= Visa.find(params[:visa_id]).name %></p>
   </div>
 
-  <div>
+  <div data-controller="cases_form">
     <%= form.label :lodgement_date, "Lodgement Date" %>
     <%= form.date_field :lodgement_date, id: "lodgement_date", onchange: "updateGrantDays()", class: "calendar" %>
   </div>

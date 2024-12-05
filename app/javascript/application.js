@@ -1,8 +1,8 @@
-import "@hotwired/turbo-rails"; // Turbo for seamless navigation
-import { Application } from "@hotwired/stimulus";
-import { definitionsFromContext } from "controllers";
+// import "@hotwired/turbo-rails"; // Turbo for seamless navigation
+// import { Application } from "@hotwired/stimulus";
+// import { definitionsFromContext } from "controllers";
 import "bootstrap"; // Load Bootstrap
-import "../stylesheets/application.scss"; // Import your SCSS
+//import "../stylesheets/application.scss"; // Import your SCSS
 import "cases_form"; // Import the file from Importmap
 console.log("cases_form.js imported");
 
