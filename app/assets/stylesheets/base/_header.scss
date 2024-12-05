@@ -1,7 +1,7 @@
 header.p-2.text-bg-dark {
   background: linear-gradient(45deg, #000, #495057); // Gradient background
   padding: 0.25rem 0; // Reduced padding for a more compact header
-  position: fixed; // Sticky to the top
+  position: absolute; // Sticky to the top
   top: 0px;
   left: 0;
   width: 100%;
@@ -16,11 +16,13 @@ header.p-2.text-bg-dark {
   .container {
     max-width: 1200px; // Center content within a maximum width
     height: auto;
+    padding: 0;
   }
 
   a {
     text-decoration: none;
     color: #ffffff;
+    margin-top: 0;
 
     &:hover {
       color: #f8d22e; // Hover effect for the links
