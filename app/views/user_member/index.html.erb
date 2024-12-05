@@ -3,6 +3,19 @@
 <h1 class="welcome-title">Welcome, Member!</h1>
 <p class="welcome-message">This is the member dashboard for accessing member-specific features.</p>
 
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: user_member_index_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
 <% if @visa_categories.present? %>
   <h2 class="visa-title">Visa Categories</h2>
   <div class="visa-categories-container">

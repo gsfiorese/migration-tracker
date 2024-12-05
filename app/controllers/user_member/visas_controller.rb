@@ -4,6 +4,18 @@ class UserMember::VisasController < ApplicationController
 
   def index
     @visas = @visa_category.visas
+    if params[:query].present?
+      query = params[:query]
+
+      # Check if the query is numeric for subclass comparison
+      if query.match?(/\A\d+\z/) # Regex to check if query is a number
+        sql_subquery = "name ILIKE :query OR subclass = :subclass"
+        @visas = @visas.where(sql_subquery, query: "%#{query}%", subclass: query.to_i)
+      else
+        sql_subquery = "name ILIKE :query"
+        @visas = @visas.where(sql_subquery, query: "%#{query}%")
+      end
+    end
   end
 
   private
