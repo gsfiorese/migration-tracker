@@ -1,23 +1,21 @@
 <%= stylesheet_link_tag 'member_application', media: 'all' %>
 
-
-<h1>Welcome, Member!</h1>
-<p>This is the member dashboard for accessing member-specific features.</p>
-
-<%= link_to "Log Off", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
+<h1 class="welcome-title">Welcome, Member!</h1>
+<p class="welcome-message">This is the member dashboard for accessing member-specific features.</p>
 
 <% if @visa_categories.present? %>
-  <h2>Visa Categories</h2>
+  <h2 class="visa-title">Visa Categories</h2>
   <div class="visa-categories-container">
     <% @visa_categories.each do |category| %>
       <div class="visa-category-card">
-          <div class="card">
-            <h5 class="card-title"><%= category.name %></h5>
-            <p class="card-text"><%= category.about %></p>
-          </div>
+        <div class="card">
+          <h5 class="card-title"><%= category.name %></h5>
+          <p class="card-text"><%= category.about %></p>
+          <%= link_to "View more", user_member_visa_category_visas_path(category), class: "btn view-more-btn" %>
         </div>
+      </div>
     <% end %>
   </div>
 <% else %>
-  <p>No visa categories available.</p>
+  <p class="no-categories">No visa categories available.</p>
 <% end %>

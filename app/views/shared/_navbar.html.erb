@@ -1,0 +1,13 @@
+<!-- Header with logo, navigation, search, and buttons -->
+  <header class="p-2 text-bg-dark">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+        <%= image_tag "Migration.png", alt: "Migration Tracker Logo", class: "me-2 logo" %>
+      </a>
+      <div class="text-end">
+        <%= link_to "Log out ", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, id: "logout-link", class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</header>

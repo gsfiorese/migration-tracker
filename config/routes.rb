@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     get "log/index", to: "log#index", as: "log_index"
     get "welcome/index", to: "welcome#index", as: "welcome_index"
 
+    # Add routes for ImportController under user_admin namespace.
+    get "import/index", to: "import#index", as: "import_index"
+    post "import/upload", to: "import#upload", as: "import_upload"
+    post "import/process_import", to: "import#process_import", as: "import_process_import"
+
     # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
     resources :yearly_migration_data, only: [:index]
 
@@ -33,18 +38,23 @@ Rails.application.routes.draw do
 
     resources :anzsco_codes
 
-    resources :visa_categories do
-      resource :visas
+    # Member-specific visa_categories with nested visas
+    resources :visa_categories, only: [:index, :show] do
+      resources :visas, only: [:index] # N  ested route for visas related to a specific category
     end
-  end
 
-  # Add namespace for YearlyMigration
-  namespace :yearly_migration do
-    resources :yearly_migration_data, only: [:index] do
-      collection do
-        get :fetch_tab_data # Route for AJAX-based tab functionality
+    # Add namespace for YearlyMigration
+    namespace :yearly_migration do
+      resources :yearly_migration_data, only: [:index] do
+        collection do
+          get :fetch_tab_data # Route for AJAX-based tab functionality
+        end
       end
     end
+
+    resources :visas, only: [:index] # Global list of visas for members (optional if needed)
+
+    resources :cases, only: [:index, :new, :create, :show]
   end
 
   # Route for welcome page (root)
@@ -59,6 +69,8 @@ Rails.application.routes.draw do
   get '/terms-of-service', to: 'pages#terms_of_service', as: 'terms_of_service'
 
   # Route from welcome page to user/member page
+
+  # Routes for user roles redirection
   get "/user_admin", to: "user_admin#index", as: :user_admin_index
   get "/user_member", to: "user_member#index", as: :user_member_index
 

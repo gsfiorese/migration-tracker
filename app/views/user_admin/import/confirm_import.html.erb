@@ -1,0 +1,17 @@
+<h2>Confirm Import</h2>
+<p>The file has been uploaded successfully. Are you ready to process the import into the selected table?</p>
+
+<ul>
+  <li><strong>File Path:</strong> <%= @temp_file_path %></li>
+  <li><strong>Selected Database:</strong> <%= @selected_database %></li>
+  <li><strong>Selected Table:</strong> <%= @selected_table %></li>
+</ul>
+
+<%= form_with url: user_admin_import_process_import_path, method: :post do |form| %>
+  <%= hidden_field_tag :file_path, @temp_file_path %>
+  <%= hidden_field_tag :selected_database, @selected_database %>
+  <%= hidden_field_tag :selected_table, @selected_table %>
+  <%= submit_tag "Process Import", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Cancel", user_admin_import_index_path, class: "btn btn-secondary" %>

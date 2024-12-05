@@ -8,26 +8,23 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body style="padding-top: 220px;">
 
-  <!-- Header with logo, navigation, search, and buttons -->
-  <header class="p-3 text-bg-dark">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <%= image_tag "MTLogo.svg", size: "200x100", alt: "Migration Tracker Logo", class: "me-2" %>
-        </a>
-        <div class="text-end ms-auto">
-          <div class="d-inline-block">
-            <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light me-2" %>
-          </div>
-          <div class="d-inline-block">
-            <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-warning" %>
-          </div>
-        </div>
+<!-- Header with logo, navigation, search, and buttons -->
+<header class="p-2 text-bg-dark">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+        <%= image_tag "Migration.png", alt: "Migration Tracker Logo", class: "me-2 logo" %>
+      </a>
+      <div class="text-end">
+        <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light me-2" %>
+        <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-warning" %>
       </div>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- Tabs Section -->
   <div class="container my-4">
@@ -50,19 +47,6 @@
       <div class="data-container mt-4"></div>
     </div>
   </div>
-
-  <!-- Footer Section -->
-  <footer class="bg-light text-center py-3 mt-auto">
-    <nav class="mb-2">
-      <%= link_to 'About', about_path, class: 'text-dark mx-2' %>
-      <%= link_to 'Contact', contact_path, class: 'text-dark mx-2' %>
-      <%= link_to 'Employment', employment_path, class: 'text-dark mx-2' %>
-      <%= link_to 'Resources', resources_path, class: 'text-dark mx-2' %>
-      <%= link_to 'Privacy Policy', privacy_policy_path, class: 'text-dark mx-2' %>
-      <%= link_to 'Terms of Service', terms_of_service_path, class: 'text-dark mx-2' %>
-    </nav>
-    <p class="small text-muted">© 2024 Migration Tracker INC. All rights reserved. Immitracker Inc. doesn't provide any immigration advice.</p>
-  </footer>
 
   <!-- Bootstrap JS Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

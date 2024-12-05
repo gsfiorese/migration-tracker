@@ -1,0 +1,35 @@
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if @visa %>
+  <h2>Cases for Visa: <%= @visa.name %> (Subclass: <%= @visa.subclass %>)</h2>
+<% else %>
+  <h2>All Cases</h2>
+<% end %>
+
+<% if @cases.any? %>
+  <ul>
+    <% @cases.each do |case_item| %>
+      <li>
+        <strong>Case ID:</strong> <%= case_item.id %> |
+        <strong>Status:</strong> <%= case_item.case_status ? "Open" : "Closed" %>
+        <%= link_to "View Details", user_member_case_path(case_item), class: "btn" %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <% if @visa %>
+    <p>No cases found for the visa <strong><%= @visa.name %> (Subclass: <%= @visa.subclass %>)</strong>.</p>
+  <% else %>
+    <p>No cases found.</p>
+  <% end %>
+<% end %>
+
+<% if @visa && @visa.visa_category_id %>
+  <%= link_to "Back to Visas", user_member_visa_category_visas_path(@visa.visa_category_id), class: "btn" %>
+<% else %>
+  <%= link_to "Back to Visa Categories", user_member_visa_categories_path, class: "btn" %>
+<% end %>

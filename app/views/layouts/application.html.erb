@@ -17,14 +17,35 @@
     <!-- Load Bootstrap CSS from CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 
-    <!-- Load custom application styles and Importmap JavaScript -->
+    <!-- Load custom application styles -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <!-- Use Importmap for JavaScript -->
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
-    <!-- Include custom JavaScript for tabs -->
-    <%= javascript_include_tag 'tabs', 'data-turbolinks-track': 'reload' %>
+  <body class="d-flex flex-column min-vh-100">
+    <% unless request.path == "/" || request.path == "/users/sign_in" %>
+      <%= render "shared/navbar" %>
+    <% end %>
+
+    <!-- Flash Messages -->
+    <% if flash[:success] %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= flash[:success] %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% elsif flash[:error] %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= flash[:error] %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+
+    <div class="flex-fill">
+      <%= yield %>
+    </div>
+
+    <%= render "shared/footer" %>
   </body>
 </html>

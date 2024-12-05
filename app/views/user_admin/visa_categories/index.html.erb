@@ -1,8 +1,10 @@
 <h1>This is visa categories index page</h1>
 
-<p><%= link_to "Add New Visa Category", new_user_admin_visa_category_path%></p>
-<p><%= link_to "Return to Admin Menu ", user_admin_index_path%></p>
-
+  <div class="return-button">
+    <%= link_to "Add New Visa Category", new_user_admin_visa_category_path, class: "admin-link"%>
+    <%= link_to "Return to Admin Menu", user_admin_index_path, class: "admin-link" %>
+  </div>
+</div>
 
 <ul>
     <% @visa_categories.each do |visa_category| %>

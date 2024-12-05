@@ -1,7 +1,11 @@
 <h1>All Anzsco codes</h1>
 
-<p><%= link_to "Add Additional Anzsco Codes ", new_user_admin_anzsco_code_path%></p>
-<p><%= link_to "Return to Admin Menu ", user_admin_index_path%></p>
+  <div class="return-button">
+    <%= link_to "Add Additional Anzsco Codes ", new_user_admin_anzsco_code_path, class: "admin-link"%>
+    <%= link_to "Return to Admin Menu", user_admin_index_path, class: "admin-link" %>
+  </div>
+</div>
+
 
 <ul>
     <% @anzsco_codes.each do |anzsco_code| %>

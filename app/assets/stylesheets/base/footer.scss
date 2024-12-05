@@ -1,0 +1,32 @@
+footer {
+  background-color: #f8f9fa; // Subtle light gray background
+  color: #343a40; // Dark gray text color for better readability
+  padding: 1.5rem 1rem; // Adequate padding for spacing
+  text-align: center;
+  box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1); // Optional shadow for depth
+  margin-top: auto; // Ensures the footer is pushed to the bottom
+}
+
+footer nav {
+  margin-bottom: 1rem;
+
+  a {
+    color: #343a40; // Dark gray link color
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline; // Subtle hover effect
+      color: #007bff; // Accent color for hover
+    }
+  }
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #6c757d; // Muted gray for secondary text
+}
