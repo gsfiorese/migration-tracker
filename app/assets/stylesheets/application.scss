@@ -1,8 +1,8 @@
 // This page is for all style sheets asscociated with both user flows
 // eg, cards / components
 // Import base variables and mixins
-@import "base/variables";
-@import "base/mixins";
+@import "base/variables.scss";
+@import "base/mixins.scss";
 @import "base/login.scss";
 @import "base/footer.scss";
 @import "base/signup.scss";
@@ -12,7 +12,7 @@
 @import "components/cards";
 
 // Import namespace-specific styles
-@import "user_member/visa_categories";
+@import "user_member/visa_categories.scss";
 @import "user_member/admin_application.scss";
 @import "user_member/countries_index.scss";
 @import "user_member/users_index.scss";

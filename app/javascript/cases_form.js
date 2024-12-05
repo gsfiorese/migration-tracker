@@ -1,3 +1,4 @@
+
 function calculateDays(startDate, endDate) {
   const start = new Date(startDate);
   const end = new Date(endDate);
@@ -44,5 +45,7 @@ function updateDaysGrantAfterCoContact() {
     }
   }
 }
+
+
 
 console.log("cases_form.js loaded with inline event listeners");

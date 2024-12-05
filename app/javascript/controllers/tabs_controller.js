@@ -39,4 +39,4 @@ export default class extends Controller {
   }
 }
 
-console.log(`Loading data for: ${sheetName}`);
+// console.log(`Loading data for: ${sheetName}`);

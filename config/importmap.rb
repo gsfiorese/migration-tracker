@@ -10,3 +10,5 @@ pin "bootstrap", to: "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/boots
 # config UJS
 pin "@rails/ujs", to: "https://ga.jspm.io/npm:@rails/ujs@7.0.0/lib/assets/compiled/rails-ujs.js"
 pin "cases_form", to: "cases_form.js"
+pin "@hotwired/stimulus", to: "stimulus.min.js"
+pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
