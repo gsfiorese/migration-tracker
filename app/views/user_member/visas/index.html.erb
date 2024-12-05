@@ -3,13 +3,15 @@
 <div class="visa-types-container">
   <% @visas.each do |visa| %>
     <div class="visa-type-card">
-      <h3 class="card-title"><%= visa.name %></h3>
-      <p><strong>Subclass:</strong> <%= visa.subclass %></p>
-      <div class="card-actions">
-        <%= link_to "Add a case", new_user_member_case_path(visa_id: visa.id),
-                    data: { turbo: false }, class: "view-more-btn" %>
-        <%= link_to "View cases", user_member_cases_path(visa_id: visa.id),
-                    class: "view-more-btn" %>
+      <div class="card">
+        <h3 class="card-title"><%= visa.name %></h3>
+        <p><strong>Subclass:</strong> <%= visa.subclass %></p>
+        <div class="card-actions">
+          <%= link_to "Add a case", new_user_member_case_path(visa_id: visa.id),
+                      data: { turbo: false }, class: "view-more-btn" %>
+          <%= link_to "View cases", user_member_cases_path(visa_id: visa.id),
+                      class: "view-more-btn" %>
+        </div>
       </div>
     </div>
   <% end %>

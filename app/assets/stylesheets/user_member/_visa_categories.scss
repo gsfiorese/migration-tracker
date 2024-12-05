@@ -1,5 +1,77 @@
 @import "components/cards";
 
+// Visa Categories Container
+.visa-categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  align-items: stretch; // Ensures all cards have the same height
+}
+
+// Visa Category Cards
+.visa-category-card {
+  flex: 0 1 calc(33.333% - 20px);
+  max-width: calc(33.333% - 20px);
+  display: flex;
+  flex-direction: column; // Ensures proper vertical alignment within the card
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-height: 180px; // Set a minimum height to ensure uniformity
+}
+
+.visa-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+// Card Inner Content
+.card {
+  flex-grow: 1; // Makes the card content fill the available space
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Evenly distributes content within the card
+}
+
+// Card Title
+.card-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #3498db;
+  text-align: center;
+}
+
+// Card Text
+.card-text {
+  flex-grow: 1; // Ensures equal spacing for card text
+  font-size: 1em;
+  margin-bottom: 0px;
+  color: #7f8c8d;
+}
+
+// Button
+.view-more-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #1abc9c;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1em;
+  align-self: center; // Centers the button horizontally
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.view-more-btn:hover {
+  background-color: #16a085;
+}
+
 // General Page Styling
 body {
   font-family: Arial, sans-serif;
@@ -9,65 +81,100 @@ body {
   padding: 20px;
 }
 
-// Title and Message
+// Center Alignment for Welcome Section
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 15vh; // Adjust to reduce vertical space
+  margin-bottom: 10px; // Bring Visa Categories closer
+}
+
 .welcome-title {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-  color: #2c3e50;
+  font-size: 1.8em; // Slightly smaller than before
+  color: #7f8c8d;
+  margin: 0; // Remove default margin
 }
 
 .welcome-message {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  color: #7f8c8d;
+  font-size: 1em; // Reduced size
+  color: #95a5a6;
+  margin-top: 5px; // Closer to the welcome title
 }
 
-// Visa Categories
+// Visa Title Styling
+.visa-title-section {
+  margin-top: 5px; // Reduced margin to bring it closer to the header
+  margin-bottom: 20px; // Maintain spacing before the cards
+}
+
 .visa-title {
-  font-size: 2em;
-  margin-bottom: 20px;
+  font-size: 2.2em; // Prominent but slightly smaller
+  font-weight: bold;
   color: #34495e;
+  text-transform: uppercase;
+  letter-spacing: 1px; // Subtle spacing for readability
+  text-align: center; // Center the title
 }
 
-.visa-categories-container {
+// Visa Types Container
+.visa-types-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+  gap: 15px; // Space between cards
+  margin-top: 20px; // Space from the title
+  align-items: stretch; // Ensures all cards have the same height
 }
 
-// Visa Category Cards
-.visa-category-card {
-  flex: 0 1 calc(33.333% - 20px);
+// Visa Type Cards
+.visa-type-card {
+  flex: 0 1 calc(33.333% - 20px); // Adjusts for 3 cards per row
   max-width: calc(33.333% - 20px);
-  background-color: #ffffff;
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+// Scoped Card Styles
+.visa-types-container .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Space content evenly
+  background-color: #f8f9fa;
   border: 1px solid #dcdcdc;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: left;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   padding: 15px;
   transition: transform 0.2s, box-shadow 0.2s;
+  min-height: 180px;
 }
 
-.visa-category-card:hover {
+.visa-types-container .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.card-title {
+// Card Title
+.visa-types-container .card-title {
   font-size: 1.5em;
   margin-bottom: 10px;
   color: #3498db;
   text-align: center;
 }
 
-.card-text {
-  font-size: 1em;
-  margin-bottom: 15px;
-  color: #7f8c8d;
+// Card Actions
+.visa-types-container .card-actions {
+  display: flex;
+  justify-content: center; // Center-align the buttons
+  gap: 10px; // Space between buttons
+  margin-top: auto; // Push actions to the bottom
 }
 
+// Button Styles
 .view-more-btn {
   display: inline-block;
   padding: 10px 15px;
@@ -76,53 +183,10 @@ body {
   text-decoration: none;
   border-radius: 5px;
   font-size: 1em;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .view-more-btn:hover {
   background-color: #16a085;
-}
-
-.no-categories {
-  font-size: 1.2em;
-  color: #e74c3c;
-}
-
-// Visas type
-
-.visa-types-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center the cards on the page */
-  gap: 20px; /* Spacing between cards */
-  margin: 20px auto;
-  max-width: 1200px; /* Optional: Restrict the container's width */
-}
-
-.visa-type-card {
-  flex: 0 1 calc(33.333% - 20px); /* Three cards per row */
-  max-width: calc(33.333% - 20px);
-  background-color: #ffffff;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.visa-type-card:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-.card-title {
-  font-size: 1.5em;
-  margin: 10px 0;
-  color: #3498db;
-}
-
-.visa-type-card p {
-  margin: 10px 0;
-  font-size: 1em;
-  color: #7f8c8d;
+  transform: translateY(-2px);
 }
