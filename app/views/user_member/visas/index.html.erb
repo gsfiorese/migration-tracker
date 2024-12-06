@@ -1,15 +1,30 @@
 <h2 class="visa-title">Visas for <%= @visa_category.name %></h2>
 
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: user_member_visa_category_visas_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
 <div class="visa-types-container">
   <% @visas.each do |visa| %>
     <div class="visa-type-card">
-      <h3 class="card-title"><%= visa.name %></h3>
-      <p><strong>Subclass:</strong> <%= visa.subclass %></p>
-      <div class="card-actions">
-        <%= link_to "Add a case", new_user_member_case_path(visa_id: visa.id),
-                    data: { turbo: false }, class: "view-more-btn" %>
-        <%= link_to "View cases", user_member_cases_path(visa_id: visa.id),
-                    class: "view-more-btn" %>
+      <div class="card">
+        <h3 class="card-title"><%= visa.name %></h3>
+        <p><strong>Subclass:</strong> <%= visa.subclass %></p>
+        <div class="card-actions">
+          <%= link_to "Add a case", new_user_member_case_path(visa_id: visa.id),
+                      data: { turbo: false }, class: "view-more-btn" %>
+          <%= link_to "View cases", user_member_cases_path(visa_id: visa.id),
+                      class: "view-more-btn" %>
+        </div>
       </div>
     </div>
   <% end %>
