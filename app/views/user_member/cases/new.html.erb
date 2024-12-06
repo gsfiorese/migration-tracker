@@ -37,13 +37,13 @@
     <%= form.date_field :co_response_date, id: "co_response_date", class: "calendar", onchange: "updateDaysToCoContact()" %>
   </div>
 
-  <div data-controller="generate-numbers">
-    <p data-generate-numbers-target="name"></p>
+  <div>
+    <p></p>
     <%= form.label :grant_date, "Grant Date" %>
     <%= form.date_field :grant_date, id: "grant_date", class: "calendar" %>
   </div>
 
-  <div data_controller="tabs">
+  <div>
     <%= form.label :grant_days, "Grant Days" %>
     <%= form.number_field :grant_days, id: "grant_days", disabled: true, onchange: "updateGrantDays(); updateDaysGrantAfterCoContact()" %>
   </div>
