@@ -1,7 +1,9 @@
 <%= stylesheet_link_tag 'member_application', media: 'all' %>
 
-<h1 class="welcome-title">Welcome, Member!</h1>
-<p class="welcome-message">This is the member dashboard for accessing member-specific features.</p>
+<div class="welcome-section">
+  <h1 class="welcome-title">Welcome, Member!</h1>
+  <p class="welcome-message">This is the member dashboard for accessing member-specific features.</p>
+</div>
 
 <div class="row justify-content-center">
   <div class="col-sm-8 my-3">
@@ -17,7 +19,9 @@
 </div>
 
 <% if @visa_categories.present? %>
-  <h2 class="visa-title">Visa Categories</h2>
+  <div class="visa-title-section">
+    <h2 class="visa-title">Visa Categories</h2>
+  </div>
   <div class="visa-categories-container">
     <% @visa_categories.each do |category| %>
       <div class="visa-category-card">
