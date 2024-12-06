@@ -20,11 +20,14 @@
     <!-- Load custom application styles and Importmap JavaScript -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <!-- Import tabs.js -->
+    <script type="module">
+      import "tabs";
+    </script>
   </head>
 
   <body>
     <%= yield %>
-    <!-- Include custom JavaScript for tabs -->
-    <%= javascript_include_tag 'tabs', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
