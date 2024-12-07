@@ -79,12 +79,12 @@
 
   <div>
     <%= form.label :case_status, "Case Status" %>
-    <%= form.text_field :case_status %>
+    <%= form.select :case_status, [["Active", true], ["Inactive", false]], prompt: "Is your case active" %>
   </div>
 
   <div>
     <%= form.label :agency, "Agency" %>
-    <%= form.text_field :agency %>
+    <%= form.select :agency, [["Yes", true], ["No", false]], prompt: "Did you use an agency" %>
   </div>
 
   <div>
@@ -99,7 +99,7 @@
 
   <div>
     <%= form.label :documents, "Documents" %>
-    <%= form.text_field :documents %>
+    <%= form.select :documents, ["Passport", "Birth Certificate", "Skills Assessment", "Academic Qualifications", "Resume", "Paysilps", "English Profficiency Score", "Health Assessment"], prompt: "What documents did you upload" %>
   </div>
 
   <div>
@@ -109,7 +109,7 @@
 
   <div>
     <%= form.label :engl_prof, "English Proficiency" %>
-    <%= form.text_field :engl_prof %>
+    <%= form.select :engl_prof, ["A1","A2","B1","B2","C1","C2"], prompt: "Select your level" %>
   </div>
 
   <div>
