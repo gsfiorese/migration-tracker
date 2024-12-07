@@ -51,7 +51,7 @@ users = User.all
     on_shore: [true, false].sample,
     employment_verification: [true, false].sample,
     sponsor_state: ["NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT", "None"].sample,
-    documents: ["passport", "Birth Certificate", "Skills Assessment", "Academic Qualifications", "Resume", "Paysilps", "English Profficiency Score", "Health Assessment"].sample(rand(1..3)).join(', '),
+    documents: ["Passport", "Birth Certificate", "Skills Assessment", "Academic Qualifications", "Resume", "Paysilps", "English Profficiency Score", "Health Assessment"].sample(rand(1..3)).join(', '),
     co_contact_type: ["Email", "Phone", "Text Message"].sample,
     engl_prof: ["A1","A2","B1","B2","C1","C2"].sample,
   )
