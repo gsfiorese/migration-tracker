@@ -40,7 +40,9 @@ Rails.application.routes.draw do
 
     # Member-specific visa_categories with nested visas
     resources :visa_categories, only: [:index, :show] do
-      resources :visas, only: [:index] # N  ested route for visas related to a specific category
+      resources :visas, only: [:index] do  # N  \ested route for visas related to a specific category
+        resources :comments, only: [:create], controller: 'comments' # Create comments for visas
+      end
     end
 
     # Add namespace for YearlyMigration
@@ -52,9 +54,14 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :visas, only: [:index] # Global list of visas for members (optional if needed)
+    resources :visas, only: [:index] do # Global list of visas for members (optional if needed)
+      resources :comments, only: [:create], controller: 'comments' # Create comments for visas (alternative route)
+    end
 
-    resources :cases, only: [:index, :new, :create, :show]
+
+    resources :cases, only: [:index, :new, :create, :show] do
+      resources :comments, only: [:create], controller: 'comments' # Nested route for comments on cases
+    end
   end
 
   # Route for welcome page (root)

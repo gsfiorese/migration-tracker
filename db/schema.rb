@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_30_091358) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_07_033752) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_091358) do
     t.index ["country_id"], name: "index_cases_on_country_id"
     t.index ["user_id"], name: "index_cases_on_user_id"
     t.index ["visa_id"], name: "index_cases_on_visa_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "visa_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["visa_id"], name: "index_comments_on_visa_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -125,6 +137,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_091358) do
   add_foreign_key "cases", "countries"
   add_foreign_key "cases", "users"
   add_foreign_key "cases", "visas"
+  add_foreign_key "comments", "visas"
   add_foreign_key "logs", "users"
   add_foreign_key "visas", "visa_categories"
 end

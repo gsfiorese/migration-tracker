@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # 1 user has many logs : dependent: :nullify means that if a user is deleted, the logs will not be deleted.
   has_many :logs, dependent: :nullify
+  has_many :comments
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
