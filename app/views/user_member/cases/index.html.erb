@@ -33,3 +33,26 @@
 <% else %>
   <%= link_to "Back to Visa Categories", user_member_visa_categories_path, class: "btn" %>
 <% end %>
+
+<!-- Global Comment Form (Visible even if there are no cases) -->
+<div id="global-comments">
+  <h3>Leave a Comment:</h3>
+  <%= form_with(model: [@visa, @comment], remote: true, url: user_member_visa_comments_path(@visa.id), id: "comment-form") do |form| %>
+    <%= form.text_area :content, id: "comment_body", placeholder: "Add a comment..." %>
+    <%= form.submit "Post Comment" %>
+  <% end %>
+</div>
+
+<!-- Display Comments for Visa -->
+<h3>Comments for Visa:</h3>
+<% if @visa.comments.any? %>
+  <ul id="comments-list">
+    <% @visa.comments.each do |comment| %>
+      <li id="comment_<%= comment.id %>">
+        <strong><%= comment.user.first_name %>:</strong> <%= comment.content %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No comments yet for this visa.</p>
+<% end %>

@@ -1,0 +1,12 @@
+// Append the new comment to the list of comments
+<% if @comment.persisted? %>
+  $('#comments-list').append(
+    `<li id="comment_<%= @comment.id %>">
+      <strong><%= @comment.user.name %>:</strong> <%= j @comment.content %>
+    </li>`
+  );
+  // Clear the comment form
+  $('#comment_body').val('');
+<% else %>
+  alert('Failed to add comment.');
+<% end %>
