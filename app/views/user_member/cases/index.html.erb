@@ -29,7 +29,7 @@
 <% end %>
 
 <% if @visa && @visa.visa_category_id %>
-  <%= link_to "Back to Visas", user_member_visa_category_visas_path(@visa.visa_category_id), class: "btn" %>
+  <%= link_to "Back to Visas", user_member_visa_category_visas_path(@visa.visa_category_id), class: "btn-back" %>
 <% else %>
   <%= link_to "Back to Visa Categories", user_member_visa_categories_path, class: "btn" %>
 <% end %>
