@@ -30,26 +30,41 @@
   </header>
 
   <!-- Tabs Section -->
-  <div class="container my-4">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <% ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania"].each do |state| %>
-        <li class="nav-item" role="presentation">
-          <a
-            class="nav-link <%= "active" if state.parameterize == "australia" %>"
-            id="<%= state.parameterize %>-tab"
-            href="#"
-            data-tab="<%= state.parameterize %>">
-            <%= state %>
-          </a>
-        </li>
-      <% end %>
-    </ul>
+<div class="container my-4">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <% ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania"].each_with_index do |state, index| %>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link <%= 'active' if index == 0 %>"
+          id="<%= state.parameterize %>-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#<%= state.parameterize %>"
+          type="button"
+          role="tab"
+          aria-controls="<%= state.parameterize %>"
+          aria-selected="<%= index == 0 %>"
+          data-tab-name="<%= state.parameterize %>">
+          <%= state %>
+        </button>
+      </li>
+    <% end %>
+  </ul>
 
-    <div class="tab-content" id="myTabContent">
-      <div class="loading-message text-center mt-4">Select a tab to view data.</div>
-      <div class="data-container mt-4"></div>
-    </div>
+  <div class="tab-content" id="myTabContent">
+    <% ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania"].each_with_index do |state, index| %>
+      <div
+        class="tab-pane fade <%= 'show active' if index == 0 %>"
+        id="<%= state.parameterize %>"
+        role="tabpanel"
+        aria-labelledby="<%= state.parameterize %>-tab">
+        <div class="loading-message text-center mt-4">Loading...</div>
+        <div class="data-container mt-4"></div>
+      </div>
+    <% end %>
   </div>
+</div>
+
+
 
   <!-- Footer Section -->
   <footer class="bg-light text-center py-3 mt-auto">
@@ -61,7 +76,7 @@
       <%= link_to 'Privacy Policy', privacy_policy_path, class: 'text-dark mx-2' %>
       <%= link_to 'Terms of Service', terms_of_service_path, class: 'text-dark mx-2' %>
     </nav>
-    <p class="small text-muted">© 2024 Migration Tracker INC. All rights reserved. Immitracker Inc. doesn't provide any immigration advice.</p>
+    <p class="small text-muted">©️ 2024 Migration Tracker INC. All rights reserved. Immitracker Inc. doesn't provide any immigration advice.</p>
   </footer>
 
   <!-- Bootstrap JS Bundle with Popper -->

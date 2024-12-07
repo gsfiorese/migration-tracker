@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
-
   # Routes for user_admin namespace
   namespace :user_admin do
     get "log/index", to: "log#index", as: "log_index"
     get "welcome/index", to: "welcome#index", as: "welcome_index"
-
-    # Add routes for ImportController under user_admin namespace.
     get "import/index", to: "import#index", as: "import_index"
     post "import/upload", to: "import#upload", as: "import_upload"
-    post "import/process_import", to: "import#process_import", as: "import_process_import"
 
     # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
     resources :yearly_migration_data, only: [:index]
@@ -19,7 +15,7 @@ Rails.application.routes.draw do
     # Add routes for ANZSCO Code
     resources :anzsco_codes
 
-    # Add routes for user
+    # Add routes for users
     resources :users
 
     # Add routes for visa category and visa
@@ -33,34 +29,29 @@ Rails.application.routes.draw do
   namespace :user_member do
     get "welcome/index", to: "welcome#index", as: "welcome_index"
 
-    # Add routes for YearlyMigrationData under user_member (if needed for direct access)
-    resources :yearly_migration_data, only: [:index]
-
+    # Add routes for ANZSCO codes and visa categories
     resources :anzsco_codes
 
-    # Member-specific visa_categories with nested visas
     resources :visa_categories, only: [:index, :show] do
-      resources :visas, only: [:index] # N  ested route for visas related to a specific category
+      resources :visas, only: [:index]
     end
 
-    # Add namespace for YearlyMigration
-    namespace :yearly_migration do
-      resources :yearly_migration_data, only: [:index] do
-        collection do
-          get :fetch_tab_data # Route for AJAX-based tab functionality
-        end
-      end
-    end
-
-    resources :visas, only: [:index] # Global list of visas for members (optional if needed)
-
+    resources :visas, only: [:index]
     resources :cases, only: [:index, :new, :create, :show]
   end
 
-  # Route for welcome page (root)
+  # YearlyMigration routes outside any namespace
+  namespace :yearly_migration do
+    resources :yearly_migration_data, only: [:index] do
+      collection do
+        get :fetch_tab_data # Route for AJAX-based tab functionality
+      end
+    end
+  end
+
+  # Routes for footer links and root page
   root "welcome#index"
 
-  # Routes for footer headings
   get '/about', to: 'pages#about', as: 'about'
   get '/contact', to: 'pages#contact', as: 'contact'
   get '/employment', to: 'pages#employment', as: 'employment'
@@ -69,12 +60,10 @@ Rails.application.routes.draw do
   get '/terms-of-service', to: 'pages#terms_of_service', as: 'terms_of_service'
 
   # Route from welcome page to user/member page
-
-  # Routes for user roles redirection
   get "/user_admin", to: "user_admin#index", as: :user_admin_index
   get "/user_member", to: "user_member#index", as: :user_member_index
 
-  # Add YearlyMigrationDataController routes at the root level (if needed for welcome#index)
+  # Add YearlyMigrationDataController routes at the root level
   resources :yearly_migration_data, only: [:index]
 
   # Configuration for Devise to work with Omniauth (Google)
@@ -82,10 +71,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500
+  # Health check
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/*
+  # Render dynamic PWA files
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 end
