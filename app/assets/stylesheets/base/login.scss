@@ -87,20 +87,45 @@ a:hover {
   text-decoration: underline;
 }
 
-button.btn {
-  padding: 12px 20px;  // Increased padding for Google Sign-In button
-  border-radius: 4px;
-  background-color: #db4437;
-  color: white;
-  font-size: 18px;
-  width: 100%;  // Full-width for Google button
-  margin-top: 20px;
-  cursor: pointer;
+// Google button
+
+button.google-btn {
+  width: 100%;  // Full width
+  margin-top: 5px;  // Spacing above the button
+  font-size: 16px;  // Text size
+  padding: 12px;  // Button padding
+  border-radius: 4px;  // Rounded corners
+  border-width: 1px;  // Thin border
+  border-style: solid;  // Solid border
+  border-color: rgb(204, 204, 204);  // Light gray border color
+  background-color: white;  // White background
+  color: black;  // Black text
+  font-weight: 600;  // Bold text for emphasis
+  cursor: pointer;  // Pointer cursor for interactivity
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;  // Smooth hover effects
+  display: flex;  // Flexbox layout
+  align-items: center;  // Vertically center logo and text
+  justify-content: center;  // Horizontally center logo and text
 }
 
-button.btn:hover {
-  background-color: #c1352d;  // Slightly darker on hover
+button.google-btn:hover {
+  background-color: rgb(240, 240, 240);  // Light gray background on hover
+  border-color: rgb(170, 170, 170);  // Darker gray border on hover
 }
+
+button.google-btn img {
+  margin-right: 10px;  // Space between the logo and the text
+}
+
+.forgot-password {
+  margin-bottom: 10px; // Add space below the "Forgot your password?" link
+}
+
+.button_to {
+  margin-top: 20px; // Add space above the form button
+}
+
+// Form check
 
 .form-check-label {
   font-size: 16px;
