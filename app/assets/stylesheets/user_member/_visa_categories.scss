@@ -196,3 +196,138 @@ body {
 .form-control {
   margin-top: 20px;
 }
+
+// View cases
+// Back Buttons and Post Comment Buttons
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #1abc9c; // Same color as Post Comment button
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #16a085; // Same hover color as Post Comment button
+  }
+}
+
+.btn-back {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #19ab8e; // Same color as Post Comment button
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #17977dd3; // Same hover color as Post Comment button
+  }
+}
+
+// Flash Messages
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  &.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+  }
+}
+
+// Header Styles
+h2 {
+  font-size: 1.75rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+// Case List
+.case-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    strong {
+      margin-right: 5px;
+      color: #555;
+    }
+  }
+}
+
+// Global Comment Form
+#global-comments {
+  margin-top: 30px;
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  #comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    #comment_body {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      border: 1px solid #dcdcdc;
+      border-radius: 4px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    input[type="submit"] {
+      @extend .btn; // Reuse the same styles as Back buttons
+    }
+  }
+}
+
+// Comments Section
+#comments-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #dcdcdc;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    strong {
+      color: #3498db;
+    }
+  }
+
+  p {
+    color: #555;
+    font-style: italic;
+  }
+}
