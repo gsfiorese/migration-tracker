@@ -17,7 +17,6 @@ module UserMember
       @comment = Comment.new
     end
 
-
     def new
       if @visa
         @case = Case.new(visa: @visa) # Pre-fill the visa association
@@ -37,22 +36,6 @@ module UserMember
       end
     end
 
-    # def create_comment
-    #   @visa = Visa.find(params[:visa_id])
-    #   @comment = @visa.comments.new(comment_params)
-    #   @comment.user = current_user
-
-    #   if @comment.save
-    #     respond_to do |format|
-    #       format.html { redirect_to user_member_cases_path, notice: "Comment added successfully." }  # fallback for non-AJAX requests
-    #       format.js   # This will look for a create.js.erb file to handle the comment addition
-    #     end
-    #   else
-    #     flash.now[:alert] = "Failed to add comment."
-    #     render :index
-    #   end
-    # end
-
     private
 
     # Set the visa object if visa_id is present in params
@@ -69,9 +52,5 @@ module UserMember
         :documents, :co_contact_type, :engl_prof
       )
     end
-    # Strong parameters for comment creation
-    # def comment_params
-    #   params.require(:comment).permit(:content, :visa_id, :case_id)
-    # end
   end
 end
