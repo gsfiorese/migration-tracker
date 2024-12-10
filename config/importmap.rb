@@ -17,3 +17,6 @@ pin "@rails/ujs", to: "https://ga.jspm.io/npm:@rails/ujs@7.0.0/lib/assets/compil
 
 # Pin your custom tabs.js
 pin "tabs", to: "tabs.js"
+
+# Pin your custom cases.js
+pin "cases", to: "cases.js"
