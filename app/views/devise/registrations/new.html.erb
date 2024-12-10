@@ -31,9 +31,12 @@
        <a href="/users/sign_in">Log in</a><br />
 
     <form class="button_to" method="post" action="/users/auth/google_oauth2">
-  <button data-turbo="false" type="submit" class="btn btn-primary w-100">
-    Sign in with GoogleOauth2
-  </button>
+    <button data-turbo="false" type="submit" class="google-btn w-100">
+      <img src="<%= asset_path('google-white.png') %>"
+         alt="Google logo"
+         style="width: 20px; height: 20px; margin-right: 10px;">
+      Sign in with Google
+    </button>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off" />
 </form>
       </div>
