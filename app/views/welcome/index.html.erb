@@ -11,23 +11,24 @@
 <body>
 
   <!-- Header with logo, navigation, search, and buttons -->
-  <header class="p-3 text-bg-dark">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <%= image_tag "MTLogo.svg", size: "200x100", alt: "Migration Tracker Logo", class: "me-2" %>
-        </a>
-        <div class="text-end ms-auto">
+<body style="padding-top: 220px;">
+  <header class="p-2 text-bg-dark">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+        <%= image_tag "Migration.png", alt: "Migration Tracker Logo", class: "me-2 logo" %>
+      </a>
+      <div class="text-end ms-auto">
           <div class="d-inline-block">
             <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light me-2" %>
           </div>
           <div class="d-inline-block">
-            <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-warning" %>
+            <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-outline-light me-2" %>
           </div>
-        </div>
-      </div>
     </div>
-  </header>
+  </div>
+</header>
+</body>
 
   <!-- Tabs Section -->
 <div class="container my-4">
