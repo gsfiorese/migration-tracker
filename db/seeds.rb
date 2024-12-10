@@ -46,7 +46,7 @@ users = User.all
     work_p_claim: rand(0..15),
     total_p: rand(50..130),
     days_aftr_assess: rand(1..15),
-    case_status: ["Active", "Inactive"].sample,
+    case_status: ["Application Received", "In Progress", "Further Information Requested", "Awaiting Outcome", "Granted", "Finalised", "Refused", "Expired", "Cancelled/Withdrawn"].sample,
     agency: ["Yes", "No"].sample,
     on_shore: [true, false].sample,
     employment_verification: [true, false].sample,
