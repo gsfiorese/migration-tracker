@@ -1,0 +1,59 @@
+// Global styles for headings
+h2, h3 {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 300; // Lighter weight (not bold)
+  color: #333;
+}
+
+// Welcome Header and Login Link - Centered
+.welcome-header {
+  text-align: center;
+  margin: 0 auto;
+  padding: 15px 0;  // Slightly less vertical spacing
+}
+
+.welcome-header h2 {
+  font-size: 1.5rem; // Smaller font size
+  font-weight: 300;  // Lighter weight (not bold)
+  line-height: 1.3;
+  color: #333;
+  margin-bottom: 0.5rem; // Reduced margin for closer spacing between the headers
+}
+
+.bold-header {
+  font-weight: 700; // Make this header bold
+}
+
+.welcome-header a {
+  font-weight: 300;  // Regular weight for the link (not bold)
+  color: #007bff; // Blue link color for the login
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #f8f9fa; // Light background for contrast
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e2e6ea; // Hover effect for the button-like appearance
+  }
+}
+
+// Australian Immigration Statistics Header - Closer to Navbar
+.stats-header {
+  margin-top: 5px;
+  margin-bottom: 5px;  // Reduced the gap between the header and nav
+  font-size: 1.4rem; // Smaller font size for the stats header
+  font-weight: 300; // Lighter weight (not bold)
+  color: #222;
+  padding-top: 5px; // Keep top padding as is
+  padding-bottom: 2px; // Reduced bottom padding for a more compact look
+}
+
+.stats-header h3 {
+  font-size: 1.4rem; // Smaller font size
+}
+
+// Container - Reduced Top Padding
+.container.my-4 {
+  padding-top: 10px;  // Reduced top padding
+}
