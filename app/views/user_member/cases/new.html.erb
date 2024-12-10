@@ -42,6 +42,11 @@
     <%= form.date_field :grant_date, id: "grant_date", class: "calendar" %>
   </div>
 
+   <div>
+    <%= form.label :assess_commence, "Assess Commence" %>
+    <%= form.date_field :grant_date, id: "grant_date", class: "calendar" %>
+  </div>
+
   <div>
     <%= form.label :grant_days, "Grant Days" %>
     <%= form.number_field :grant_days, id: "grant_days", disabled: true, onchange: "updateGrantDays(); updateDaysGrantAfterCoContact()" %>
@@ -79,7 +84,7 @@
 
   <div>
     <%= form.label :case_status, "Case Status" %>
-    <%= form.select :case_status, [["Active", true], ["Inactive", false]], prompt: "Is your case active" %>
+    <%= form.select :case_status, ["Application Received", "In Progress", "Further Information Requested", "Awaiting Outcome", "Granted", "Finalised", "Refused", "Expired", "Cancelled/Withdrawn"], prompt: "What is the Status of your case" %>
   </div>
 
   <div>
