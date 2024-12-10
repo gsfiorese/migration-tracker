@@ -33,11 +33,36 @@ Rails.application.routes.draw do
     resources :anzsco_codes
 
     resources :visa_categories, only: [:index, :show] do
+<<<<<<< HEAD
       resources :visas, only: [:index]
     end
 
     resources :visas, only: [:index]
     resources :cases, only: [:index, :new, :create, :show]
+=======
+      resources :visas, only: [:index] do  # N  \ested route for visas related to a specific category
+        resources :comments, only: [:create], controller: 'comments' # Create comments for visas
+      end
+    end
+
+    # Add namespace for YearlyMigration
+    namespace :yearly_migration do
+      resources :yearly_migration_data, only: [:index] do
+        collection do
+          get :fetch_tab_data # Route for AJAX-based tab functionality
+        end
+      end
+    end
+
+    resources :visas, only: [:index] do # Global list of visas for members (optional if needed)
+      resources :comments, only: [:create], controller: 'comments' # Create comments for visas (alternative route)
+    end
+
+
+    resources :cases, only: [:index, :new, :create, :show] do
+      resources :comments, only: [:create], controller: 'comments' # Nested route for comments on cases
+    end
+>>>>>>> 2844a89323da57df75bacc628ea57622f48b7c48
   end
 
   # YearlyMigration routes outside any namespace

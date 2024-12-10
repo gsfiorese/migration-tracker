@@ -1,15 +1,22 @@
 module UserMember
   class CasesController < ApplicationController
-    before_action :set_visa, only: [:index, :new]
+    before_action :set_visa, only: [:index, :new, ]
+    # before_action :set_visa, only: [:create_comment]
 
     def index
       if params[:visa_id].present?
         @visa = Visa.find_by(id: params[:visa_id])
         @cases = Case.where(visa_id: @visa&.id)
+      elsif params[:format].present?
+        @visa = Visa.find_by(id: params[:format])
+        @cases = Case.where(visa_id: @visa&.id)
       else
         @cases = Case.all
       end
+      @comments = @cases.map { |case_obj| case_obj.comments.includes(:user) }
+      @comment = Comment.new
     end
+
 
     def new
       if @visa
@@ -30,6 +37,22 @@ module UserMember
       end
     end
 
+    # def create_comment
+    #   @visa = Visa.find(params[:visa_id])
+    #   @comment = @visa.comments.new(comment_params)
+    #   @comment.user = current_user
+
+    #   if @comment.save
+    #     respond_to do |format|
+    #       format.html { redirect_to user_member_cases_path, notice: "Comment added successfully." }  # fallback for non-AJAX requests
+    #       format.js   # This will look for a create.js.erb file to handle the comment addition
+    #     end
+    #   else
+    #     flash.now[:alert] = "Failed to add comment."
+    #     render :index
+    #   end
+    # end
+
     private
 
     # Set the visa object if visa_id is present in params
@@ -46,5 +69,9 @@ module UserMember
         :documents, :co_contact_type, :engl_prof
       )
     end
+    # Strong parameters for comment creation
+    # def comment_params
+    #   params.require(:comment).permit(:content, :visa_id, :case_id)
+    # end
   end
 end
