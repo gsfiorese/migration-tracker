@@ -309,25 +309,102 @@ h2 {
 }
 
 // Comments Section
+#comments-container {
+  width: 60%;  /* Limits the width to 60% of the page width */
+  max-width: 600px;  /* Limits the maximum width of the container to 600px */
+  margin: 0 auto;  /* Centers the container horizontally */
+  padding: 1rem;  /* Adds some space around the content */
+  padding-top: 2rem;  /* Increases the top padding to 2rem */
+  // background-color: #f9f9f9;  /* Light background for better visibility */
+  border-radius: 10px;  /* Rounded corners */
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Light shadow around the container */
+  display: flex;  /* Uses flexbox */
+  flex-direction: column;  /* Aligns the children (comments) vertically */
+  gap: 1rem;  /* Space between comments */
+  padding-top: 10px;
+}
+
+/* Comments List */
 #comments-list {
   list-style: none;
+
   padding: 0;
+  margin: 0;
+  width: 100%;  /* Uses the full available width of the container */
+  display: flex;
+  flex-direction: column;  /* Aligns comments vertically */
+}
 
-  li {
-    padding: 10px;
-    border-bottom: 1px solid #dcdcdc;
+li {
+  position: relative;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  display: inline-block;
+  word-wrap: break-word;
+  max-width: 80%;  /* Limits the width of the bubbles to 80% of the container */
+  margin-bottom: 1rem;  /* Space between comments */
 
-    &:last-child {
-      border-bottom: none;
-    }
+  background-color: #f1f1f1;
+  align-self: flex-start;  /* Default alignment: left */
+  text-align: left;
 
-    strong {
-      color: #3498db;
-    }
+  /* Customizing the triangles */
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+
+  &::before {
+    left: -10px;
+    top: 10px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #f1f1f1;
+  }
+
+  strong {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
   }
 
   p {
-    color: #555;
     font-style: italic;
+    color: #666;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  /* Alternating alignment for odd comments */
+  &:nth-child(odd) {
+    background-color: #f1f1f1;  /* Color for the first user's bubbles */
+    align-self: flex-start;  /* Aligns left */
+    text-align: left;
+
+    &::before {
+      left: -10px;
+      top: 10px;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid #f1f1f1;
+    }
+  }
+
+  &:nth-child(even) {
+    background-color: #d9edf7;  /* Color for the second user's bubbles */
+    align-self: flex-end;  /* Aligns right */
+    text-align: left;
+
+    &::before {
+      right: -10px;
+      top: 10px;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid #d9edf7;
+    }
   }
 }
