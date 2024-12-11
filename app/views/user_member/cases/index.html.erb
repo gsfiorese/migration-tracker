@@ -46,13 +46,15 @@
 <!-- Display Comments for Visa -->
 <h3>Comments for Visa:</h3>
 <% if @visa.comments.any? %>
-  <ul id="comments-list">
-    <% @visa.comments.each do |comment| %>
-      <li id="comment_<%= comment.id %>">
-        <strong><%= comment.user.first_name %>:</strong> <%= comment.content %>
-      </li>
-    <% end %>
-  </ul>
+  <div id="comments-member-container">
+    <ul id="comments-member-list">
+      <% @visa.comments.each do |comment| %>
+        <li id="comment_<%= comment.id %>" class="visa-comment">
+          <strong><%= comment.user.first_name %>:</strong> <%= comment.content %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% else %>
   <p>No comments yet for this visa.</p>
 <% end %>
