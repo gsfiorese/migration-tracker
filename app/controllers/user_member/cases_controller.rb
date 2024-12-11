@@ -7,14 +7,11 @@ module UserMember
       if params[:visa_id].present?
         @visa = Visa.find_by(id: params[:visa_id])
         @cases = Case.where(visa_id: @visa&.id)
-      elsif params[:format].present?
-        @visa = Visa.find_by(id: params[:format])
-        @cases = Case.where(visa_id: @visa&.id)
       else
         @cases = Case.all
       end
-      @comments = @cases.map { |case_obj| case_obj.comments.includes(:user) }
-      @comment = Comment.new
+      # @comments = @cases.map { |case_obj| case_obj.comments.includes(:user) }
+      # @comment = Comment.new
     end
 
 

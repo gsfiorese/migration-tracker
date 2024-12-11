@@ -7,31 +7,49 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
 
-User.find_or_create_by!(email: "admin@gmail.com") do |user|
-  user.first_name = "admin"
-  user.email = "admin@gmail.com"
-  user.password = "123456"
-  user.password_confirmation = "123456"
-  user.role = "admin" # Optional attribute, depending on your User model
-end
+# User.find_or_create_by!(email: "admin@gmail.com") do |user|
+#   user.first_name = "admin"
+#   user.email = "admin@gmail.com"
+#   user.password = "123456"
+#   user.password_confirmation = "123456"
+#   user.role = "admin" # Optional attribute, depending on your User model
+# end
 
-User.find_or_create_by!(email: "customer@gmail.com") do |user|
-  user.first_name = "customer"
-  user.email = "customer@gmail.com"
-  user.password = "123456"
-  user.password_confirmation = "123456"
-  user.role = "member" # Optional attribute, depending on your User model
-end
+# User.find_or_create_by!(email: "customer@gmail.com") do |user|
+#   user.first_name = "customer"
+#   user.email = "customer@gmail.com"
+#   user.password = "123456"
+#   user.password_confirmation = "123456"
+#   user.role = "member" # Optional attribute, depending on your User model
+# end
+
+# users = []
+# 100.times do
+#     email = Faker::Internet.unique.email
+#   # end while existing_emails.include?(email) # Ensure no duplicates with pre-existing emails
+
+#   user = User.create!(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     email: email,
+#     password: "123456",
+#     password_confirmation: "123456",
+#     role: "member"
+#   )
+
+#   users << user
+# end
 
 countries = Country.all
 anzsco_codes = AnzscoCode.all
 visas = Visa.all
 users = User.all
 
-15.times do
+users.each do |user|
   Case.create!(
-    user_id: users.ids.sample,
+    user_id: user.id,
     country_id: countries.ids.sample,
     anzsco_code_id: anzsco_codes.ids.sample,
     visa_id: visas.ids.sample,
@@ -55,4 +73,5 @@ users = User.all
     co_contact_type: ["Email", "Phone", "Text Message"].sample,
     engl_prof: ["A1","A2","B1","B2","C1","C2"].sample,
   )
+  # end
 end

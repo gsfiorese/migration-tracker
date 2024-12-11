@@ -11,15 +11,74 @@
 <% end %>
 
 <% if @cases.any? %>
-  <ul>
+<h1>Case List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Lodgement Date</th>
+      <th>CO Contact Date</th>
+      <th>CO Response Date</th>
+      <th>Grant Date</th>
+      <th>Assessment Commence</th>
+      <th>Grant Days</th>
+      <th>Days to CO Contact</th>
+      <th>Days Grant After CO Contact</th>
+      <th>Work Points Claimed</th>
+      <th>Total Points</th>
+      <th>Days After Assessment</th>
+      <th>On Shore</th>
+      <th>Case Status</th>
+      <th>Agency</th>
+      <th>Employment Verification</th>
+      <th>Active</th>
+      <th>Sponsor State</th>
+      <th>Documents</th>
+      <th>CO Contact Type</th>
+      <th>English Proficiency</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @cases.each do |case_item| %>
-      <li>
-        <strong>Case ID:</strong> <%= case_item.id %> |
-        <strong>Status:</strong> <%= case_item.case_status ? "Open" : "Closed" %>
-        <%= link_to "View Details", user_member_case_path(case_item), class: "btn" %>
-      </li>
+      <tr>
+        <td><%= case_item.user.first_name %></td>
+        <td><%= case_item.user.last_name %></td>
+        <td><%= case_item.lodgement_date %></td>
+        <td><%= case_item.co_contact_date %></td>
+        <td><%= case_item.co_response_date %></td>
+        <td><%= case_item.grant_date %></td>
+        <td><%= case_item.assess_commence %></td>
+        <td><%= case_item.grant_days %></td>
+        <td><%= case_item.days_to_co_contact %></td>
+        <td><%= case_item.days_grant_aftr_co_contact %></td>
+        <td><%= case_item.work_p_claim %></td>
+        <td><%= case_item.total_p %></td>
+        <td><%= case_item.days_aftr_assess %></td>
+        <td><%= case_item.on_shore ? 'Yes' : 'No' %></td>
+        <td><%= case_item.case_status ? 'Open' : 'Closed' %></td>
+        <td><%= case_item.agency ? 'Yes' : 'No' %></td>
+        <td><%= case_item.employment_verification ? 'Yes' : 'No' %></td>
+        <td><%= case_item.active ? 'Yes' : 'No' %></td>
+        <td><%= case_item.sponsor_state %></td>
+        <td><%= case_item.documents %></td>
+        <td><%= case_item.co_contact_type %></td>
+        <td><%= case_item.engl_prof %></td>
+      </tr>
     <% end %>
-  </ul>
+  </tbody>
+</table>
+
+  <%# <ul>
+    <% @cases.each do |case_item| %>
+      <%# <li>
+        <strong>Case ID:</strong> <%= case_item.id %> |
+        <%# <strong>Status:</strong> <%= case_item.total_p %>
+        <%# <%= link_to "View Details", user_member_case_path(case_item), class: "btn" %>
+      <%# </li>
+    <% end %>
+  <%# </ul> %> %> %> %> %> %>
 <% else %>
   <% if @visa %>
     <p>No cases found for the visa <strong><%= @visa.name %> (Subclass: <%= @visa.subclass %>)</strong>.</p>
@@ -34,14 +93,14 @@
   <%= link_to "Back to Visa Categories", user_member_visa_categories_path, class: "btn" %>
 <% end %>
 
-<!-- Global Comment Form (Visible even if there are no cases) -->
-<div id="global-comments">
-  <h3>Leave a Comment:</h3>
-  <%= form_with(model: [@visa, @comment], remote: true, url: user_member_visa_comments_path(@visa.id), id: "comment-form") do |form| %>
-    <%= form.text_area :content, id: "comment_body", placeholder: "Add a comment..." %>
-    <%= form.submit "Post Comment" %>
-  <% end %>
-</div>
+<%# <% <!-- Global Comment Form (Visible even if there are no cases) --> %>
+<%# <% <div id="global-comments"> %> %>
+<%# <% <h3>Leave a Comment:</h3> %> %>
+  <%# <%= form_with(model: [@visa, @comment], remote: true, url: user_member_visa_comments_path(@visa.id), id: "comment-form") do |form| %> %>
+    <%# <%= form.text_area :content, id: "comment_body", placeholder: "Add a comment..." %> %>
+    <%# <%= form.submit "Post Comment" %> %>
+  <%# <% end %> %>
+<%# </div> %> %>
 
 <!-- Display Comments for Visa -->
 <h3>Comments for Visa:</h3>
