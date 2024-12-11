@@ -1,9 +1,9 @@
 module UserMember
   class CasesController < ApplicationController
-    before_action :set_visa, only: [:index, :new, ]
-    # before_action :set_visa, only: [:create_comment]
+    before_action :set_visa, only: [:index, :new]
 
     def index
+      # If visa_id is present, filter cases by visa
       if params[:visa_id].present?
         @visa = Visa.find_by(id: params[:visa_id])
         @cases = Case.where(visa_id: @visa&.id)
@@ -13,13 +13,16 @@ module UserMember
       else
         @cases = Case.all
       end
-      @comments = @cases.map { |case_obj| case_obj.comments.includes(:user) }
+
+      # Eager load comments for each case
+      @comments = @cases.includes(:comments).map { |case_obj| case_obj.comments.includes(:user) }
       @comment = Comment.new
     end
 
     def new
+      # Pre-fill the visa association when creating a new case
       if @visa
-        @case = Case.new(visa: @visa) # Pre-fill the visa association
+        @case = Case.new(visa: @visa)
       else
         redirect_to user_member_visas_path, alert: "Please select a visa before adding a case."
       end
@@ -30,7 +33,8 @@ module UserMember
       @case.user = current_user # Assign the currently logged-in user
 
       if @case.save
-        redirect_to user_member_cases_path, notice: "Case was successfully created."
+        # Redirect to the index page with the associated visa_id after case creation
+        redirect_to user_member_cases_path(visa_id: @case.visa_id), notice: "Case was successfully created."
       else
         render :new
       end
