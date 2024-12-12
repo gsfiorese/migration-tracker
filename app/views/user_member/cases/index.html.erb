@@ -5,7 +5,7 @@
 <% end %>
 
 <% if @visa %>
-  <h2>Cases for Visa: <%= @visa.name %> (Subclass: <%= @visa.subclass %>)</h2>
+  <h2><strong>Cases for Visa: <%= @visa.name %> (Subclass: <%= @visa.subclass %>)</strong></h2>
 <% else %>
   <h2>All Cases</h2>
 <% end %>
@@ -16,13 +16,13 @@
       <tr>
         <th>Case ID</th>
         <th>Status</th>
+        <th>Country</th>
+        <th>ANZSCO code</th>
+        <th>State</th>
+        <th>Total Points</th>
+        <th>English Score</th>
         <th>Lodgement Date</th>
         <th>Grant Date</th>
-        <th>Days to CO Contact</th>
-        <th>Grant Days</th>
-        <th>Work Points Claimed</th>
-        <th>Total Points</th>
-        <th>Comments</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -31,23 +31,15 @@
         <tr>
           <td><%= case_item.id %></td>
           <td><%= case_item.case_status ? "Open" : "Closed" %></td>
+          <td><%= case_item.country_id %></td>
+          <td><%= case_item.anzsco_code_id %></td>
+          <td><%= case_item.sponsor_state %></td>
+          <td><%= case_item.total_p %></td>
+          <td><%= case_item.engl_prof %></td>
           <td><%= case_item.lodgement_date %></td>
           <td><%= case_item.grant_date %></td>
-          <td><%= case_item.days_to_co_contact %></td>
-          <td><%= case_item.grant_days %></td>
-          <td><%= case_item.work_p_claim %></td>
-          <td><%= case_item.total_p %></td>
-          <td>
-            <% if case_item.comments.any? %>
-              <ul>
-                <% case_item.comments.each do |comment| %>
-                  <li><strong><%= comment.user.first_name %>:</strong> <%= comment.content %></li>
-                <% end %>
-              </ul>
-            <% else %>
-              <p>No comments yet.</p>
-            <% end %>
-          </td>
+
+
           <td>
             <%= link_to "View Details", user_member_case_path(case_item), class: "btn btn-info" %>
           </td>
