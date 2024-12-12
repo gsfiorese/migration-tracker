@@ -29,6 +29,9 @@ gem "dotenv-rails", groups: [ :development, :test ]
 # Pagination for Rails
 gem "kaminari"
 
+# Faker for seed file
+gem "faker"
+
 # To add forms
 gem "simple_form"
 

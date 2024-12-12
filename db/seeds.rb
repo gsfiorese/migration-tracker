@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
 User.find_or_create_by!(email: "admin@gmail.com") do |user|
   user.first_name = "admin"
   user.email = "admin@gmail.com"
@@ -24,14 +25,31 @@ User.find_or_create_by!(email: "customer@gmail.com") do |user|
   user.role = "member" # Optional attribute, depending on your User model
 end
 
+users = []
+100.times do
+    email = Faker::Internet.unique.email
+  # end while existing_emails.include?(email) # Ensure no duplicates with pre-existing emails
+
+  user = User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: email,
+    password: "123456",
+    password_confirmation: "123456",
+    role: "member"
+  )
+
+  users << user
+end
+
 countries = Country.all
 anzsco_codes = AnzscoCode.all
 visas = Visa.all
 users = User.all
 
-15.times do
+users.each do |user|
   Case.create!(
-    user_id: users.ids.sample,
+    user_id: user.id,
     country_id: countries.ids.sample,
     anzsco_code_id: anzsco_codes.ids.sample,
     visa_id: visas.ids.sample,

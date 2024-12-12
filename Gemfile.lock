@@ -116,6 +116,8 @@ GEM
       railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
+    faker (3.5.1)
+      i18n (>= 1.8.11, < 2)
     faraday (2.12.1)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -123,6 +125,7 @@ GEM
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
     ffi (1.17.0)
+    ffi (1.17.0-arm64-darwin)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -414,6 +417,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  faker
   importmap-rails
   jbuilder
   kaminari
