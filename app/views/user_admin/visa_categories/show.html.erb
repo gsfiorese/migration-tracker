@@ -1,25 +1,33 @@
-<h2><%= @visa_category.name%> </h2>
-<p><%= @visa_category.about%> </p>
+<div class="show-page-index">
+  <h2><strong><%= @visa_category.name %></strong></h2>
+  <p><%= @visa_category.about%> </p>
 
-<%= link_to "Update Category",
-  edit_user_admin_visa_category_path(@visa_category)
-%>
+  <div class="actions">
+    <%= link_to "Update Category", edit_user_admin_visa_category_path(@visa_category) %>
+    <%= link_to "Return to Visas Category Index", user_admin_visa_categories_path(@visa_category) %>
+    <%= button_to "Delete Category", user_admin_visa_category_path(@visa_category), method: :delete, data: { confirm: "Are you sure?" } %>
+  </div>
 
-<%= button_to "Delete Category", user_admin_visa_category_path(@visa_category), method: :delete, data: { confirm: "Are you sure?" } %>
+  <div class="actions">
+    <%= link_to "Add a New Visa", new_user_admin_visa_category_visa_path(@visa_category) %>
+  </div>
 
-<%= link_to "Return to Visas Category Index",
-  user_admin_visa_categories_path(@visa_category)
-%>
-<br>
+  <table class="show-page-table">
+    <thead>
+      <tr>
+        <th>Visas</th>
+      </tr>
+    </thead>
 
-<h2><strong> Visas </strong></h2>
-
-<%= link_to "Add a New Visa",
-   new_user_admin_visa_category_visa_path(@visa_category)
-%>
-
-
-<% @visa_category.visas.each do |visa| %>
-  <li><%= link_to visa.name, user_admin_visa_path(visa) %></li>
-  <li><%= visa.subclass %></li>
-<% end %>
+    <tbody>
+      <% @visa_category.visas.each do |visa| %>
+        <tr>
+          <td>
+            <p><%= link_to visa.name, user_admin_visa_path(visa) %></p>
+            <p><%= visa.subclass %></p>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
