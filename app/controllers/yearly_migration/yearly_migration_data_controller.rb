@@ -25,7 +25,7 @@ module YearlyMigration
 
         @data = if sheet_name.present?
                   YearlyMigrationDatum.where(sheet_name: sheet_name)
-                                      .order(migration_value: :desc)
+                                      .order(financial_year: :desc, migration_value: :desc)
                                       .page(params[:page])
                 else
                   []

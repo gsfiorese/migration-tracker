@@ -1,6 +1,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Financial Year</th>
       <th>Country</th>
       <th>Migration Value</th>
     </tr>
@@ -8,6 +9,7 @@
   <tbody>
     <% data.each do |datum| %>
       <tr>
+        <td><%= datum.financial_year %></td> <!-- Corrected from datun to datum -->
         <td><%= datum.country_name %></td> <!-- Corrected from datun to datum -->
         <td><%= datum.migration_value %></td>
       </tr>
