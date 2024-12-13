@@ -6,10 +6,10 @@ module UserMember
       # If visa_id is present, filter cases by visa
       if params[:visa_id].present?
         @visa = Visa.find_by(id: params[:visa_id])
-        @cases = Case.where(visa_id: @visa&.id)
+        @cases = Case.where(visa_id: @visa&.id).page(params[:page]).per(15)
       elsif params[:format].present?
         @visa = Visa.find_by(id: params[:format])
-        @cases = Case.where(visa_id: @visa&.id)
+        @cases = Case.where(visa_id: @visa&.id).page(params[:page]).per(15)
       else
         @cases = Case.all
       end

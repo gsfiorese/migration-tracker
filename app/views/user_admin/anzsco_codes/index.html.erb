@@ -1,14 +1,26 @@
-<h1>All Anzsco codes</h1>
+<div class="anzsco-index">
+  <h1>All Anzsco codes</h1>
 
   <div class="return-button">
     <%= link_to "Add Additional Anzsco Codes ", new_user_admin_anzsco_code_path, class: "admin-link"%>
     <%= link_to "Return to Admin Menu", user_admin_index_path, class: "admin-link" %>
   </div>
+  <table class="anzsco-table">
+    <thead>
+      <tr>
+        <th>Anzsco Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @anzsco_codes.each do |anzsco_code| %>
+        <tr>
+          <td>
+            <p><%= anzsco_code.anzsco_code %></p>
+            <p><%= link_to anzsco_code.occupation, user_admin_anzsco_code_path(anzsco_code)%></p>
+          </td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
 </div>
-
-
-<ul>
-    <% @anzsco_codes.each do |anzsco_code| %>
-      <li><h3> <%= link_to anzsco_code.anzsco_code,  user_admin_anzsco_code_path(anzsco_code) %></h3></li>
-    <% end %>
-<ul>

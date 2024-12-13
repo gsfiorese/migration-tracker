@@ -4,6 +4,18 @@ class UserAdmin::UsersController < ApplicationController
     # GET /admins/users
     def index
       @users = User.all
+      if params[:query].present?
+        query = params[:query]
+
+        # Check if the query is numeric for subclass comparison
+        if query.match?(/\A\d+\z/) # Regex to check if query is a number
+          sql_subquery = "email ILIKE :query"
+          @users = @users.where(sql_subquery, query: "%#{query}%")
+        else
+          sql_subquery = "email ILIKE :query"
+          @users = @users.where(sql_subquery, query: "%#{query}%")
+        end
+      end
     end
 
     # GET /admins/users/:id/edit

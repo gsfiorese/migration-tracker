@@ -18,15 +18,23 @@ User.find_or_create_by!(email: "admin@gmail.com") do |user|
 end
 
 User.find_or_create_by!(email: "customer@gmail.com") do |user|
-  user.first_name = "customer"
+  user.first_name = "Ron"
   user.email = "customer@gmail.com"
   user.password = "123456"
   user.password_confirmation = "123456"
   user.role = "member" # Optional attribute, depending on your User model
 end
 
+User.find_or_create_by!(email: "customer@gmail.com") do |user|
+  user.first_name = "Sophie"
+  user.email = "customer1@gmail.com"
+  user.password = "123456"
+  user.password_confirmation = "123456"
+  user.role = "member" # Optional attribute, depending on your User model
+end
+
 users = []
-100.times do
+1000.times do
     email = Faker::Internet.unique.email
   # end while existing_emails.include?(email) # Ensure no duplicates with pre-existing emails
 
