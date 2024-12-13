@@ -1,9 +1,25 @@
-<h1>This is visa index page</h1>
+<div class="visa-admin-index">
+  <h1>This is visa index page</h1>
 
-<p><%= link_to "Return to Admin Menu ", user_admin_index_path%></p>
+  <div class="actions">
+    <%= link_to "Return to Admin Menu", user_admin_index_path, class: "btn" %>
+  </div>
 
-<ul>
-    <% @visas.each do |visa| %>
-      <li><h3> <%= link_to visa.name, user_admin_visa_path(visa) %></h3></li>
+  <table class="visa-admin-table">
+    <thead>
+      <tr>
+        <th>Visa</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @visas.each do |visa| %>
+        <tr>
+          <td>
+            <p><%= link_to visa.name, user_admin_visa_path(visa) %></p>
+          </td>
+        </tr>
     <% end %>
-<ul>
+    <tbody>
+  </table>
+</div>
