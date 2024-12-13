@@ -1,7 +1,8 @@
 <h1>Import Data</h1>
 <p>This is the import page where you can upload and process files.</p>
-<p><%= link_to "Return to Admin Menu ", user_admin_index_path%></p>
-
+  <div class="actions">
+    <%= link_to "Return to Admin Menu", user_admin_index_path, class: "btn" %>
+  </div>
 <!-- First Dropdown: Select Database -->
 <%= form_with url: user_admin_import_index_path, method: :get, local: true, class: "form-inline mt-4" do %>
   <div class="form-group mb-3">
