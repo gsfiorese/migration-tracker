@@ -1,6 +1,4 @@
-
-.visa-admin-index {
-
+.countries-index {
   padding: 2rem;
   background-color: #f9f9f9;
   font-family: 'Arial', sans-serif;
@@ -13,13 +11,11 @@
     margin-bottom: 2rem;
   }
 
-
   p {
     text-align: center;
     margin-bottom: 1rem;
 
     a {
-
       font-size: 1rem;
       font-weight: 600;
       color: #007bff;
@@ -31,7 +27,7 @@
     }
   }
 
-  .visa-admin-table {
+  .countries-table {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -40,40 +36,45 @@
     border: 1px solid #dee2e6;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
-    thead {
-      background-color: #343a40;
-      color: #fff;
+    table {
+      width: 100%;
+      border-collapse: collapse;
 
-      th {
-        padding: 0.75rem 1rem;
-        text-align: left;
-        font-size: 1rem;
-        font-weight: bold;
-      }
-    }
+      thead {
+        background-color: #343a40;
+        color: #fff;
 
-    tbody {
-      tr {
-        border-bottom: 1px solid #dee2e6;
-
-        &:nth-child(even) {
-          background-color: #f8f9fa;
-        }
-
-        &:hover {
-          background-color: #e9ecef;
-        }
-
-        td {
+        th {
           padding: 0.75rem 1rem;
+          text-align: left;
           font-size: 1rem;
+          font-weight: bold;
+        }
+      }
 
-          a {
-            color: #dc3545;
-            text-decoration: none;
+      tbody {
+        tr {
+          border-bottom: 1px solid #dee2e6;
 
-            &:hover {
-              text-decoration: underline;
+          &:nth-child(even) {
+            background-color: #f8f9fa;
+          }
+
+          &:hover {
+            background-color: #e9ecef;
+          }
+
+          td {
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+
+            a {
+              color: #dc3545;
+              text-decoration: none;
+
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
         }
@@ -106,5 +107,4 @@
       }
     }
   }
-
 }
