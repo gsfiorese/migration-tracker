@@ -2,6 +2,19 @@
   <div class="actions">
     <%= link_to "Return to Admin Menu", user_admin_index_path, class: "btn" %>
   </div>
+
+    <div class="users-index">
+    <%= form_with url: user_admin_users_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
 <div class="users-index">
   <table>
     <thead>
