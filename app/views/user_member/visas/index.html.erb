@@ -1,6 +1,11 @@
 <h2 class="visa-title">Visas for <%= @visa_category.name %></h2>
 
-<div class="row justify-content-center">
+  <div class="row justify-content-center">
+
+  <div class="text-center my-3">
+    <%= link_to "Back to Visa Categories", user_member_index_path, class: "btn btn-secondary" %>
+  </div>
+
   <div class="col-sm-8 my-3">
     <%= form_with url: user_member_visa_category_visas_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
