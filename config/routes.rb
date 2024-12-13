@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get "welcome/index", to: "welcome#index", as: "welcome_index"
     get "import/index", to: "import#index", as: "import_index"
     post "import/upload", to: "import#upload", as: "import_upload"
+    post "import/process_import", to: "import#process_import", as: "import_process_import"
 
     # Add routes for YearlyMigrationData under user_admin (if needed for direct access)
     resources :yearly_migration_data, only: [:index]
