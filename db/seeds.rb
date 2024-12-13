@@ -34,7 +34,7 @@ User.find_or_create_by!(email: "customer@gmail.com") do |user|
 end
 
 users = []
-2000.times do
+1000.times do
     email = Faker::Internet.unique.email
   # end while existing_emails.include?(email) # Ensure no duplicates with pre-existing emails
 
