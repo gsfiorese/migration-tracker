@@ -1,3 +1,4 @@
+
 <h1>This is visa index page</h1>
   <div class="actions">
     <%= link_to "Return to Admin Menu", user_admin_index_path, class: "btn" %>
@@ -5,5 +6,8 @@
 <ul>
     <% @visas.each do |visa| %>
       <li><h3> <%= link_to visa.name, user_admin_visa_path(visa) %></h3></li>
+
     <% end %>
-<ul>
+    <tbody>
+  </table>
+</div>
