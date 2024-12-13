@@ -1,0 +1,53 @@
+.visas-index {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
+
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 2rem;
+  }
+
+  .return-button {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    a.admin-link {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #007bff;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 1rem;
+
+      h3 {
+        margin: 0;
+
+        a {
+          font-size: 1rem;
+          font-weight: 600;
+          color: #007bff;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
