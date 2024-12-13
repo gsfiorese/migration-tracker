@@ -1,25 +1,27 @@
-<div class="countries-index">
+<div class="visa-categories-index">
   <h1>This is visa categories index page</h1>
 
   <div class="actions">
-    <a href="<%= new_user_admin_visa_category_path %>">Add New Visa Category</a>
-    <a href="<%= user_admin_index_path %>">Return to Admin Menu</a>
+    <%= link_to "Add New Visa Category", new_user_admin_visa_category_path, class: "admin-link"%>
+    <%= link_to "Return to Admin Menu", user_admin_index_path, class: "admin-link" %>
   </div>
 
-  <div class="countries-table">
-    <table>
-      <thead>
+  <table class="visa-categories-table">
+    <thead>
+      <tr>
+        <th>Visa Categories</th>
+      </tr>
+    <thead>
+
+    <tbody>
+      <% @visa_categories.each do |visa_category| %>
         <tr>
-          <th>Visa Category</th>
+          <td>
+            <p><%= link_to visa_category.name,  user_admin_visa_category_path(visa_category) %><p>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @visa_categories.each do |visa_category| %>
-          <tr>
-            <td><%= link_to visa_category.name, user_admin_visa_category_path(visa_category) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+      <% end %>
+    </tbody>
+  </table>
+
 </div>
