@@ -12,10 +12,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @anzsco_codes.each do |code| %>
+      <% @anzsco_codes.each do |anzsco_code| %>
         <tr>
           <td>
-            <p><%= code.anzsco_code %></p>
+            <p><%= anzsco_code.anzsco_code %></p>
+            <p><%= link_to anzsco_code.occupation, user_admin_anzsco_code_path(anzsco_code)%></p>
           </td>
         </tr>
       <% end %>
